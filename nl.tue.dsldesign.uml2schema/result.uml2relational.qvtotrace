@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http:///www.eclipse.org/m2m/qvt/operational/trace.ecore">
+  <traceRecords>
+    <mappingOperation name="model2schema" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Model">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#/"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Schema">
+        <value>
+          <modelElement href="result.xmi#/"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="class2table" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Class">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Table">
+        <value>
+          <modelElement href="result.xmi#//@contents.0"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="datatype2type" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="DataType">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Type">
+        <value>
+          <modelElement href="result.xmi#//@contents.4"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="singleValAttr2column" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Attribute">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.0/@attr.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Column">
+        <value>
+          <modelElement href="result.xmi#//@contents.0/@col.1"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="datatype2type" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="DataType">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Type">
+        <value>
+          <modelElement href="result.xmi#//@contents.1"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="singleValAttr2column" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Attribute">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.0/@attr.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Column">
+        <value>
+          <modelElement href="result.xmi#//@contents.0/@col.2"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="classifier2target" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="NamedElement">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="NamedElement">
+        <value>
+          <modelElement href="result.xmi#//@contents.0"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="classifier2target" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="NamedElement">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="NamedElement">
+        <value>
+          <modelElement href="result.xmi#//@contents.1"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="class2table" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Class">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.2"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Table">
+        <value>
+          <modelElement href="result.xmi#//@contents.2"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="classifier2target" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="NamedElement">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.2"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="NamedElement">
+        <value>
+          <modelElement href="result.xmi#//@contents.2"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="class2table" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Class">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Table">
+        <value>
+          <modelElement href="result.xmi#//@contents.3"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="classifier2target" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="NamedElement">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="NamedElement">
+        <value>
+          <modelElement href="result.xmi#//@contents.3"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="classifier2target" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="NamedElement">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="NamedElement">
+        <value>
+          <modelElement href="result.xmi#//@contents.4"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="multiValAttr2table" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Attribute">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.3/@attr.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Table">
+        <value>
+          <modelElement href="result.xmi#//@contents.5"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="multiValAttr2table" package="uml2relational" module="uml2relational"/>
+    <context>
+      <context name="self" type="Attribute">
+        <value>
+          <modelElement href="../nl.tue.dsldesign.uml.metamodel/model/uml1.xmi#//@contents.0/@attr.2"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Table">
+        <value>
+          <modelElement href="result.xmi#//@contents.6"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+</trace:Trace>

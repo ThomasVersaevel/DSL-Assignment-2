@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/nl.tue.glt.relational.metamodel/src-gen" creationIcons="false"
+    editDirectory="/nl.tue.glt.relational.metamodel.edit/src-gen" editorDirectory="/nl.tue.glt.relational.metamodel.editor/src-gen"
+    modelPluginID="nl.tue.glt.relational.metamodel" modelName="Relational" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>relational.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Relational" basePackage="nl.tue.glt.relational.metamodel" disposableProviderFactory="true"
+      ecorePackage="relational.ecore#/">
+    <genClasses ecoreClass="relational.ecore#//Schema">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//Schema/contents"/>
+    </genClasses>
+    <genClasses ecoreClass="relational.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute relational.ecore#//NamedElement/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//NamedElement/schema"/>
+    </genClasses>
+    <genClasses ecoreClass="relational.ecore#//Table">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//Table/col"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//Table/key"/>
+    </genClasses>
+    <genClasses ecoreClass="relational.ecore#//Column">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//Column/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//Column/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference relational.ecore#//Column/keyOf"/>
+    </genClasses>
+    <genClasses ecoreClass="relational.ecore#//Type"/>
+  </genPackages>
+</genmodel:GenModel>

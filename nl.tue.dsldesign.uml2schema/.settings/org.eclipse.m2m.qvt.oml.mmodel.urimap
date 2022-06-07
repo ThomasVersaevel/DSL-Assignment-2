@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
+  <mapping sourceURI="http://dsldesign.tue.nl/uml" targetURI="platform:/resource/nl.tue.dsldesign.uml.metamodel/model/uml.ecore"/>
+  <mapping sourceURI="http://dsldesign.tue.nl/relational" targetURI="platform:/resource/nl.tue.dsldesign.relational.metamodel/model/relational.ecore"/>
+</uriMap:MappingContainer>

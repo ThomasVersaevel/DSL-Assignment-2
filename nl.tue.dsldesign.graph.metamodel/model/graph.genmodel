@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/nl.tue.glt.graph.metamodel/src-gen" creationIcons="false"
+    editDirectory="/nl.tue.glt.graph.metamodel.edit/src-gen" editorDirectory="/nl.tue.glt.graph.metamodel.editor/src-gen"
+    modelPluginID="nl.tue.glt.graph.metamodel" modelName="Graph" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>graph.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Graph" basePackage="nl.tue.glt.graph.metamodel" disposableProviderFactory="true"
+      ecorePackage="graph.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="graph.ecore#//Shape">
+      <genEnumLiterals ecoreEnumLiteral="graph.ecore#//Shape/BOX"/>
+      <genEnumLiterals ecoreEnumLiteral="graph.ecore#//Shape/OVAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="graph.ecore#//Style">
+      <genEnumLiterals ecoreEnumLiteral="graph.ecore#//Style/SOLID"/>
+      <genEnumLiterals ecoreEnumLiteral="graph.ecore#//Style/DOTTED"/>
+      <genEnumLiterals ecoreEnumLiteral="graph.ecore#//Style/DASHED"/>
+    </genEnums>
+    <genClasses ecoreClass="graph.ecore#//Graph">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Graph/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//Graph/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="graph.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/shape"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//Node/outEdges"/>
+    </genClasses>
+    <genClasses ecoreClass="graph.ecore#//Edge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Edge/style"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//Edge/target"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

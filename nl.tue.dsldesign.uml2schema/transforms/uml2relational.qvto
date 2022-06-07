@@ -1,0 +1,61 @@
+modeltype UML uses 'http://dsldesign.tue.nl/uml';
+modeltype Relational uses 'http://dsldesign.tue.nl/relational';
+	
+transformation uml2relational(in uml : UML, out Relational);
+
+main() {
+	uml.rootObjects()[UML::Model]->map model2schema();
+}
+
+mapping UML::Model::model2schema() : Relational::Schema {
+	contents := self.contents->map classifier2target()->
+				union(getMultiValAttributes()-> map multiValAttr2table())
+}
+
+mapping UML::NamedElement::classifier2target() : Relational::NamedElement 
+disjuncts UML::DataType::datatype2type, UML::Class::class2table{}
+
+mapping UML::DataType::datatype2type() : Relational::Type {
+	name := self.name;
+}
+
+mapping UML::Class::class2table() : Relational::Table {
+	name := self.name;
+	var pk := object Relational::Column {name := 'ObjectId'; type := getIntegerType();};
+	col := Sequence{pk}->union(self.attr->select(e | not e.multiValued)->map singleValAttr2column());
+	key := Sequence{pk};
+}
+
+mapping UML::Attribute::singleValAttr2column() : Relational::Column {
+	if (self.type.oclIsKindOf(UML::DataType)) {
+		name := self.name;
+		type := self.type.oclAsType(UML::DataType).map datatype2type();
+	}
+	else{ 
+		name := self.name + "Id";
+		type := getIntegerType();
+	}
+}
+
+mapping UML::Attribute::multiValAttr2table() : Relational::Table {
+	name := self.owner.name + '_' + self.name;
+	if(self.type.oclIsKindOf(UML::DataType)){
+		col := Sequence {
+			object Relational::Column {name := self.name; type := self.type.oclAsType(UML::DataType).map datatype2type()},
+			object Relational::Column {name := self.owner.name + "Id"; type := getIntegerType()}
+		}
+	} else{
+		col := Sequence {
+			object Relational::Column {name := self.name + "Id"; type := getIntegerType()},
+			object Relational::Column {name := self.owner.name + "Id"; type := getIntegerType()}
+		}
+	}
+}
+
+query getIntegerType() : Relational::Type {
+	return UML::DataType.allInstances()->select(e | e.name = "Integer")->asSequence()->first().oclAsType(UML::DataType).map datatype2type();
+}
+
+query getMultiValAttributes() : Sequence(UML::Attribute) {
+	return UML::Attribute.allInstances()->select(e | e.multiValued)->asSequence()
+}

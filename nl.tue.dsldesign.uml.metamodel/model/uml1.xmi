@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://dsldesign.tue.nl/uml" xsi:schemaLocation="http://dsldesign.tue.nl/uml uml.ecore">
+  <contents xsi:type="uml:Class" name="Person">
+    <attr name="name" type="//@contents.1"/>
+    <attr name="address" type="//@contents.2"/>
+    <attr name="emails" multiValued="true" type="//@contents.1"/>
+  </contents>
+  <contents xsi:type="uml:DataType" name="String"/>
+  <contents xsi:type="uml:Class" name="Address"/>
+  <contents xsi:type="uml:Class" name="Family">
+    <attr name="members" multiValued="true" type="//@contents.0"/>
+  </contents>
+  <contents xsi:type="uml:DataType" name="Integer"/>
+</uml:Model>

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Uml2schema Plug-in
+Bundle-SymbolicName: nl.tue.dsldesign.uml2schema
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.m2m.qvt.oml
+Bundle-ActivationPolicy: lazy
