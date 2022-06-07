@@ -1,3 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="hcl" nsURI="http://www.example.org/hcl" nsPrefix="hcl"/>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hcl" nsURI="http://www.example.org/hcl" nsPrefix="hcl">
+  <eClassifiers xsi:type="ecore:EClass" name="Computer" instanceClassName="">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="display" upperBound="-1"
+        eType="#//Display" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processing" upperBound="-1"
+        eType="#//Processing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" upperBound="-1"
+        eType="#//Storage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Processing">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cores" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloatObject"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="l1" lowerBound="1" eType="#//L1"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="l2" lowerBound="1" eType="#//L2"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="l3" lowerBound="1" eType="#//L3"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storagedevice" lowerBound="1"
+        upperBound="-1" eType="#//StorageDevice" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Display">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diagonal" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloatObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" lowerBound="1"
+        eType="#//DisplayType" changeable="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DisplayType">
+    <eLiterals name="HD"/>
+    <eLiterals name="Full-HD" value="1"/>
+    <eLiterals name="4K" value="2"/>
+    <eLiterals name="5K" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StoragyType">
+    <eLiterals name="SSD"/>
+    <eLiterals name="HDD" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageDevice">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" lowerBound="1"
+        eType="#//StoragyType" changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheMagnitude">
+    <eLiterals name="KiB"/>
+    <eLiterals name="MiB" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="L1">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="magnitude" lowerBound="1"
+        eType="#//CacheMagnitude"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="L2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="magnitude" lowerBound="1"
+        eType="#//CacheMagnitude"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="L3">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="magnitude" lowerBound="1"
+        eType="#//CacheMagnitude"/>
+  </eClassifiers>
+</ecore:EPackage>

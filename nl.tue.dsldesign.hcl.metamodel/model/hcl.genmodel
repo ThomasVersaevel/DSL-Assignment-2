@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/nl.tue.dsldesign.hcl.metamodel/src-gen" creationIcons="false"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/nl.tue.dsldesign.hcl.metamodel/src-gen" creationIcons="false"
     editDirectory="/nl.tue.dsldesign.hcl.metamodel.edit/src-gen" editorDirectory="/nl.tue.dsldesign.hcl.metamodel.editor/src-gen"
     modelPluginID="nl.tue.dsldesign.hcl.metamodel" modelName="Hcl" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
@@ -8,5 +9,59 @@
   <foreignModel>hcl.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Hcl" basePackage="nl.tue.dsldesign.hcl.metamodel" disposableProviderFactory="true"
-      ecorePackage="hcl.ecore#/"/>
+      ecorePackage="hcl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//DisplayType">
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/HD"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/Full-HD"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/4K"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/5K"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//StoragyType">
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StoragyType/SSD"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StoragyType/HDD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//CacheMagnitude">
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//CacheMagnitude/KiB"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//CacheMagnitude/MiB"/>
+    </genEnums>
+    <genClasses ecoreClass="hcl.ecore#//Computer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Computer/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/display"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/processing"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/storage"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//Processing">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Processing/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Processing/cores"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Processing/speed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Processing/l1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Processing/l2"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Processing/l3"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//Storage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Storage/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Storage/storagedevice"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//Display">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Display/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Display/diagonal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Display/type"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//StorageDevice">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//StorageDevice/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//StorageDevice/size"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//L1">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L1/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L1/magnitude"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//L2">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L2/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L2/magnitude"/>
+    </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//L3">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L3/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L3/magnitude"/>
+    </genClasses>
+  </genPackages>
 </genmodel:GenModel>
