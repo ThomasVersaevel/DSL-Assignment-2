@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hcl:Computer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:hcl="http://www.example.org/hcl" xsi:schemaLocation="http://www.example.org/hcl ../hcl.ecore"/>
+<hcl:Computer
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:hcl="http://www.example.org/hcl"
+    xsi:schemaLocation="http://www.example.org/hcl ../hcl.ecore"
+    label="my_computer">
+  <storage xsi:type="hcl:StorageUnit"
+      label="my_storage">
+    <storagedevice
+        size="64"/>
+  </storage>
+  <processing
+      xsi:type="hcl:ProcessingUnit"
+      label="my_cpu"
+      cores="4"
+      speed="20.0"/>
+  <display xsi:type="hcl:DisplayUnit"
+      label="my_display"
+      diagonal="34.0"
+      type="FourK"/>
+</hcl:Computer>
