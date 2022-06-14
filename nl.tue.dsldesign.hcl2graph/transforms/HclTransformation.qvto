@@ -1,5 +1,15 @@
-transformation HclTransformation();
+modeltype HCL uses 'http://dsldesign.tue.nl/hcl';
+modeltype Graph uses 'http://dsldesign.tue.nl/graph';
+
+	
+transformation uml2relational(in hcl : HCL, out Graph);
+
+//transformation HclTransformation();
 
 main() {
+	hcl.rootObjects()[HCL::Computer]->map hcl2graph();
+}
+
+mapping HCL::Computer::hcl2graph() : Graph::Graph {
 
 }

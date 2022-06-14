@@ -25,9 +25,9 @@
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//CacheMagnitude/MiB"/>
     </genEnums>
     <genClasses ecoreClass="hcl.ecore#//ProcessingUnit">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/label"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/cores"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/speed"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/label"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/cores"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/speed"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//ProcessingUnit/l1"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//ProcessingUnit/l2"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//ProcessingUnit/l3"/>
@@ -48,14 +48,17 @@
     <genClasses ecoreClass="hcl.ecore#//L1">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L1/size"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L1/magnitude"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//L1/processingunit"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//L2">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L2/size"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L2/magnitude"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//L2/processingunit"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//L3">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L3/size"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//L3/magnitude"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//L3/processingunit"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//Computer">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Computer/label"/>
