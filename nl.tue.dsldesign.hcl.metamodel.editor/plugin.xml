@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated hcl -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="nl.tue.dsldesign.hcl.metamodel.hcl.presentation.HclModelWizardID"
+            name="%_UI_HclModelWizard_label"
+            class="nl.tue.dsldesign.hcl.metamodel.hcl.presentation.HclModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/HclModelFile.gif">
+         <description>%_UI_HclModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated hcl -->
+      <editor
+            id="nl.tue.dsldesign.hcl.metamodel.hcl.presentation.HclEditorID"
+            name="%_UI_HclEditor_label"
+            icon="icons/full/obj16/HclModelFile.gif"
+            extensions="hcl"
+            class="nl.tue.dsldesign.hcl.metamodel.hcl.presentation.HclEditor"
+            contributorClass="nl.tue.dsldesign.hcl.metamodel.hcl.presentation.HclActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hcl" nsURI="http://www.example.org/hcl" nsPrefix="hcl">
-  <eClassifiers xsi:type="ecore:EClass" name="Computer" instanceClassName="">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" unique="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="display" upperBound="-1"
-        eType="#//Display" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="processing" upperBound="-1"
-        eType="#//Processing" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" upperBound="-1"
-        eType="#//Storage" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Processing">
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingUnit" eSuperTypes="#//Processing">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cores" unique="false" lowerBound="1"
@@ -27,13 +17,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="l3" lowerBound="1" eType="#//L3"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Storage">
+  <eClassifiers xsi:type="ecore:EClass" name="StorageUnit" eSuperTypes="#//Storage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="storagedevice" lowerBound="1"
         upperBound="-1" eType="#//StorageDevice" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Display">
+  <eClassifiers xsi:type="ecore:EClass" name="DisplayUnit" eSuperTypes="#//Display">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="diagonal" lowerBound="1"
@@ -43,9 +33,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DisplayType">
     <eLiterals name="HD"/>
-    <eLiterals name="Full-HD" value="1"/>
-    <eLiterals name="4K" value="2"/>
-    <eLiterals name="5K" value="3"/>
+    <eLiterals name="FullHD" value="1"/>
+    <eLiterals name="FourK" value="2"/>
+    <eLiterals name="FiveK" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="StoragyType">
     <eLiterals name="SSD"/>
@@ -80,5 +70,36 @@
         changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="magnitude" lowerBound="1"
         eType="#//CacheMagnitude"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Computer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" upperBound="-1"
+        eType="#//Storage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processing" upperBound="-1"
+        eType="#//Processing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="display" upperBound="-1"
+        eType="#//Display" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Processing" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Display" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DisplayRef" eSuperTypes="#//Display">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="displayunit" lowerBound="1"
+        eType="#//DisplayUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingRef" eSuperTypes="#//Processing">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processingunit" lowerBound="1"
+        eType="#//ProcessingUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageRef" eSuperTypes="#//Storage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" lowerBound="1"
+        eType="#//StorageUnit"/>
   </eClassifiers>
 </ecore:EPackage>
