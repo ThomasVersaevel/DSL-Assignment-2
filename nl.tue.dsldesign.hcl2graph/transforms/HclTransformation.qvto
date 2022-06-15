@@ -17,7 +17,7 @@ mapping HCL::Computer::hcl2graph() : Graph::Graph {
 
 mapping HCL::Component::comp2Node() : Graph::Node {
 	if (self.oclIsKindOf(HCL::Display)) {
-//		object Graph::Node { label := 'test' };
+		object Graph::Node { shape := Graph::Shape::BOX; label := 'test' };
 		label := self.label;
 		shape := Graph::Shape::BOX;
 	} else if (self.oclIsKindOf(HCL::Processing)) {
