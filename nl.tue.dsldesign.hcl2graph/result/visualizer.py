@@ -18,19 +18,7 @@ root = tree.getroot()
 structure_name = 'HCLgraph' # structure.findtext('./Name')
 graph = graphviz.Digraph(format='svg',comment='structure_name', node_attr={'shape': 'box'})
 
-graphloc = '{http://dsldesign.tue.nl/graph}'
 
-print(root[1])
-# for node in root.findall(graphloc+'Graph'): # root: #.findall('./Graph'):
-#     print(node)
-
-# class Node:
-#   def __init__(self, label, nid):
-#     self.label = label
-#     self.nid = "//@nodes.ID={}".format(nid)
-#     #self.shape = shape
-
-nodelist = []
 i = 0
 
 # read all the structures
@@ -45,9 +33,7 @@ for node in root.findall('nodes'): # root: #.findall('./Graph'):
     graph.node(nodeId, label)
     
     i += 1
-    
-    print(node)
-    
+        
     for edge in node:
         target = edge.attrib['target']
         if 'style' in edge.attrib:
