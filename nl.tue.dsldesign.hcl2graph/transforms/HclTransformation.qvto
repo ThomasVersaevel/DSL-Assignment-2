@@ -23,19 +23,26 @@ mapping HCL::Computer::hcl2graph() : Graph::Graph {
 mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
-	outEdges := n->map comp2edge();
+	outEdges := n->map node2Sedge();
 }
 
 mapping HCL::Component::component2node() : Graph::Node {
 	if (self.oclIsKindOf(HCL::DisplayUnit)) {
 		label := self.label;
 		shape := Graph::Shape::BOX;
-		// outEdges := self.map comp2edge();
-		//  nodes := self.
+		// outEdges := self.map node2Dedge();
+		// nodes := self.
 	} else if (self.oclIsKindOf(HCL::Processing)) {
 		label := self.label;
 		shape := Graph::Shape::BOX;
 	}
+}
+
+// top level CPU
+mapping HCL::Processing::processing2node(in n: Sequence(Graph::Node) ) : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := 'CPU';
+	outEdges := n->map node2Sedge();
 }
 
 mapping HCL::ProcessingUnit::speed2node() : Graph::Node {
@@ -59,9 +66,15 @@ mapping HCL::DisplayUnit::type2node() : Graph::Node {
 	label := self.type.toString();
 }
 
-// EDGE
-mapping Graph::Node::comp2edge() : Graph::Edge {
+// solid EDGE
+mapping Graph::Node::node2Sedge() : Graph::Edge {
 	style := Graph::Style::SOLID;
+	target := self;	
+}
+
+// dashed EDGE
+mapping Graph::Node::node2Dedge() : Graph::Edge {
+	style := Graph::Style::DASHED;
 	target := self;	
 }
 
