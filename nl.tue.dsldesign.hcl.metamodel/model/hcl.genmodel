@@ -76,5 +76,8 @@
     <genClasses image="false" ecoreClass="hcl.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Component/label"/>
     </genClasses>
+    <genClasses ecoreClass="hcl.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Model/computer"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

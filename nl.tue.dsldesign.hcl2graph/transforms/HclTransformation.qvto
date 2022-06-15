@@ -7,24 +7,56 @@ transformation uml2relational(in hcl : HCL, out Graph);
 //transformation HclTransformation();
 
 main() {
-	hcl.rootObjects()[HCL::Computer]->map hcl2graph();
+	hcl.rootObjects()[HCL::Model]->map model2graph();
 }
 
-mapping HCL::Computer::hcl2graph() : Graph::Graph {
-	var components = self.component->map component2node();
-	var props = self.component-> getPropNodes();
-	nodes := Sequence {
-		self.map computer2node(components)
-	}->union(components);
+mapping HCL::Model::model2graph() : Graph::Graph {
+//	var nodelist = List{};
+	// var computers = Sequence{}->union( self.computer->map computer2node());
+//	var components = self.computer.component->map component2node();
+	nodes := getNodes();
+	name := 'HCL Model';
+}
+
+query getNodes() : Sequence(Graph::Node) {
+	var components = HCL::Component.allInstances()->map component2node()->asSequence();
+	var computers = HCL::Computer.allInstances()->map computer2node()->asSequence();
+//	var properties = components->
+	var cpu = object Graph::Node { label := 'CPU'; shape := Graph::Shape::BOX; };
+	var display = object Graph::Node { label := 'Display'; shape := Graph::Shape::BOX; };
 	
-	// self.component->map component2node();
-//	nodes := self.map computer2node();
+	return Sequence{
+		
+	}->union(computers)->union(components);
 }
 
-mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
+//query getComponents() :
+
+//helper HCL::Computer::getComputerNodes(inout n : List(Graph::Node)) {
+//	n->union( self->map computer2node() )
+//}
+
+
+//mapping HCL::Computer::hcl2graph() : Graph::Graph {
+//	var components = self.component->map component2node();
+//	
+//	var seq = Sequence {};
+//	var props = self.component->first(). getPropNodes();
+//	
+//	var properties = props->union(seq);
+//	
+//	nodes := Sequence {
+//		self.map computer2node(components)
+//	}->union(components)->union(props);
+//	
+//	// self.component->map component2node();
+////	nodes := self.map computer2node();
+//}
+
+mapping HCL::Computer::computer2node() : Graph::Node { //(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
-	outEdges := n->map node2Sedge();
+	//outEdges := n->map node2Sedge();
 }
 
 
@@ -57,9 +89,9 @@ disjuncts HCL::DisplayUnit::display2node, HCL::Processing::processing2node{}
 
 mapping HCL::DisplayUnit::display2node() : Graph::Node {
 	label := self.label;
-		shape := Graph::Shape::BOX;
-		var dispType = self.map type2node();
-		outEdges := Sequence { dispType.map node2Dedge() };
+	shape := Graph::Shape::BOX;
+	var dispType = self.map type2node();
+	// outEdges := Sequence { dispType.map node2Dedge() };
 }
 
 // top level CPU
