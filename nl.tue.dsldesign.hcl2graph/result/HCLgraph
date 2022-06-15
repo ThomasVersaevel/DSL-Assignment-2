@@ -1,5 +1,8 @@
 // structure_name
 digraph {
-	my_comp [label=my_comp]
-	test [label=test]
+	"//@nodes.ID=0" [label=my_comp]
+	"//@nodes.ID=0" -> "//@nodes.1"
+	"//@nodes.ID=0" -> "//@nodes.2"
+	"//@nodes.ID=1" [label=my_display]
+	"//@nodes.ID=2" [label=my_cpu]
 }

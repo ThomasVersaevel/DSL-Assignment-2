@@ -11,35 +11,60 @@ main() {
 }
 
 mapping HCL::Computer::hcl2graph() : Graph::Graph {
+	var components = self.component->map component2node();
 	nodes := Sequence {
-		self.map computer2node()
+		self.map computer2node(components)
 	}->union( self.component->map component2node() );
 	
 	// self.component->map component2node();
 //	nodes := self.map computer2node();
 }
 
-mapping HCL::Computer::computer2node() : Graph::Node {
+mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
+	shape := Graph::Shape::BOX;
+	outEdges := n->map comp2edge();
 }
 
 mapping HCL::Component::component2node() : Graph::Node {
-	if (self.oclIsKindOf(HCL::Display)) {
-//		object Graph::Node { shape := Graph::Shape::BOX; label := 'Displaytest' };
+	if (self.oclIsKindOf(HCL::DisplayUnit)) {
 		label := self.label;
-		shape := Graph::Shape::OVAL;
-		outEdges := self.map comp2edge();
+		shape := Graph::Shape::BOX;
+		// outEdges := self.map comp2edge();
+		//  nodes := self.
 	} else if (self.oclIsKindOf(HCL::Processing)) {
-//		object Graph::Node { shape := Graph::Shape::BOX; label := 'procesTest' };
 		label := self.label;
 		shape := Graph::Shape::BOX;
 	}
 }
 
-mapping HCL::Component::comp2edge() : Graph::Edge {
-	style := Graph::Style::DOTTED;
-	
+mapping HCL::ProcessingUnit::speed2node() : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := self.speed.toString() + ' ' + 'GHz';
 }
+
+// OVAL nodes
+mapping HCL::ProcessingUnit::cores2node() : Graph::Node {
+	shape := Graph::Shape::OVAL;
+	label := self.cores.toString() + ' ' + 'cores';
+}
+
+mapping HCL::ProcessingUnit::cache2node() : Graph::Node {
+	shape := Graph::Shape::OVAL;
+	label := self.l1.size.toString() + ' ' + self.l1.magnitude.toString();
+}
+
+mapping HCL::DisplayUnit::type2node() : Graph::Node {
+	shape := Graph::Shape::OVAL;
+	label := self.type.toString();
+}
+
+// EDGE
+mapping Graph::Node::comp2edge() : Graph::Edge {
+	style := Graph::Style::SOLID;
+	target := self;	
+}
+
 
 //query getShape() : Graph::Shape {
 //	return 
