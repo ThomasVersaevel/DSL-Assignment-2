@@ -1,0 +1,5 @@
+// structure_name
+digraph {
+	my_comp [label=my_comp]
+	test [label=test]
+}

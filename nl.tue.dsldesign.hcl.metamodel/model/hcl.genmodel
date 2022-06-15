@@ -16,16 +16,15 @@
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/FourK"/>
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/FiveK"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//StoragyType">
-      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StoragyType/SSD"/>
-      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StoragyType/HDD"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//StorageType">
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StorageType/SSD"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StorageType/HDD"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//CacheMagnitude">
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//CacheMagnitude/KiB"/>
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//CacheMagnitude/MiB"/>
     </genEnums>
     <genClasses ecoreClass="hcl.ecore#//ProcessingUnit">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/label"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/cores"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingUnit/speed"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//ProcessingUnit/l1"/>
@@ -33,11 +32,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//ProcessingUnit/l3"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//StorageUnit">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//StorageUnit/label"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//StorageUnit/storagedevice"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//DisplayUnit">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//DisplayUnit/label"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//DisplayUnit/diagonal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//DisplayUnit/type"/>
     </genClasses>
@@ -62,24 +59,22 @@
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//Computer">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Computer/label"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/storage"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/processing"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/display"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hcl.ecore#//Computer/component"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//Processing"/>
     <genClasses image="false" ecoreClass="hcl.ecore#//Display"/>
     <genClasses ecoreClass="hcl.ecore#//DisplayRef">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//DisplayRef/label"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//DisplayRef/displayunit"/>
     </genClasses>
     <genClasses ecoreClass="hcl.ecore#//ProcessingRef">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//ProcessingRef/label"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//ProcessingRef/processingunit"/>
     </genClasses>
     <genClasses image="false" ecoreClass="hcl.ecore#//Storage"/>
     <genClasses ecoreClass="hcl.ecore#//StorageRef">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//StorageRef/label"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//StorageRef/storage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hcl.ecore#//StorageRef/storageunit"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="hcl.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcl.ecore#//Component/label"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

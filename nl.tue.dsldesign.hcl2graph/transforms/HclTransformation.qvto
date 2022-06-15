@@ -11,5 +11,18 @@ main() {
 }
 
 mapping HCL::Computer::hcl2graph() : Graph::Graph {
+	object Graph::Node { label := self.label; shape := Graph::Shape::BOX };
+	nodes := self.component->map comp2Node();
+}
 
+mapping HCL::Component::comp2Node() : Graph::Node {
+	if (self.oclIsKindOf(HCL::Display)) {
+//		object Graph::Node { label := 'test' };
+		label := self.label;
+		shape := Graph::Shape::BOX;
+	} else if (self.oclIsKindOf(HCL::Processing)) {
+		object Graph::Node { label := 'test2' };
+	}
+	
+	
 }
