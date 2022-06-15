@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore">
-  <nodes label="my_comp" shape="OVAL">
-    <outEdges style="DASHED" target="//@nodes.1"/>
-    <outEdges style="DASHED" target="//@nodes.2"/>
-  </nodes>
-  <nodes label="my_display"/>
-  <nodes label="my_cpu"/>
-</graph:Graph>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore">
+  <graph:Graph>
+    <nodes label="my_comp">
+      <outEdges target="/0/@nodes.1"/>
+      <outEdges target="/0/@nodes.2"/>
+    </nodes>
+    <nodes label="my_display">
+      <outEdges style="DASHED" target="/1"/>
+    </nodes>
+    <nodes label="CPU"/>
+  </graph:Graph>
+  <graph:Node label="HD" shape="OVAL"/>
+  <graph:Node label="20.0 Inch"/>
+</xmi:XMI>

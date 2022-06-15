@@ -1,10 +1,9 @@
 // structure_name
 digraph {
 	node [shape=box]
-	"//@nodes.0" [label=my_comp shape=oval]
 	"//@nodes.0" [label=my_comp]
-	"//@nodes.0" -> "//@nodes.1" [style=dashed]
-	"//@nodes.0" -> "//@nodes.2" [style=dashed]
+	"//@nodes.0" -> "//@nodes.1"
+	"//@nodes.0" -> "//@nodes.2"
 	"//@nodes.1" [label=my_display]
 	"//@nodes.2" [label=my_cpu]
 }
