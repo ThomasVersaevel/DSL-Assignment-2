@@ -45,9 +45,21 @@ mapping HCL::Processing::processing2node(in n: Sequence(Graph::Node) ) : Graph::
 	outEdges := n->map node2Sedge();
 }
 
+// top level Display
+mapping HCL::Display::display2node(in n: Sequence(Graph::Node) ) : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := 'Display';
+	outEdges := n->map node2Sedge();
+}
+
 mapping HCL::ProcessingUnit::speed2node() : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.speed.toString() + ' ' + 'GHz';
+}
+
+mapping HCL::DisplayUnit::diagonal2node() : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := self.diagonal.toString() + ' ' + 'Inch';
 }
 
 // OVAL nodes
