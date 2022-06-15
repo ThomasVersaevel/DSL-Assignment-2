@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://dsldesign.tue.nl/relational" xsi:schemaLocation="http://dsldesign.tue.nl/relational ../../nl.tue.dsldesign.relational.metamodel/model/relational.ecore">
+  <contents xsi:type="relational:Table" name="Person" key="//@contents.0/@col.0">
+    <col name="ObjectId" type="//@contents.4" keyOf="//@contents.0"/>
+    <col name="name" type="//@contents.1"/>
+    <col name="addressId" type="//@contents.4"/>
+  </contents>
+  <contents xsi:type="relational:Type" name="String"/>
+  <contents xsi:type="relational:Table" name="Address" key="//@contents.2/@col.0">
+    <col name="ObjectId" type="//@contents.4" keyOf="//@contents.2"/>
+  </contents>
+  <contents xsi:type="relational:Table" name="Family" key="//@contents.3/@col.0">
+    <col name="ObjectId" type="//@contents.4" keyOf="//@contents.3"/>
+  </contents>
+  <contents xsi:type="relational:Type" name="Integer"/>
+  <contents xsi:type="relational:Table" name="Person_emails">
+    <col name="emails" type="//@contents.1"/>
+    <col name="PersonId" type="//@contents.4"/>
+  </contents>
+  <contents xsi:type="relational:Table" name="Family_members">
+    <col name="membersId" type="//@contents.4"/>
+    <col name="FamilyId" type="//@contents.4"/>
+  </contents>
+</relational:Schema>

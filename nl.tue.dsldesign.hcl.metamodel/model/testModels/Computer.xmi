@@ -10,4 +10,9 @@
       xsi:type="hcl:DisplayUnit"
       label="my_display"
       diagonal="20.0"/>
+  <component
+      xsi:type="hcl:ProcessingUnit"
+      label="my_cpu"
+      cores="4"
+      speed="20.0"/>
 </hcl:Computer>
