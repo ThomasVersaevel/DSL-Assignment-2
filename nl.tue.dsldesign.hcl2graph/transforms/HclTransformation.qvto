@@ -68,6 +68,12 @@ mapping HCL::Processing::processing2node() : Graph::Node {
 	label := 'CPU';
 //	outEdges := n->map node2Sedge();
 }
+// top level Display
+mapping HCL::Display::topdisplay2node() : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := 'Display';
+//	outEdges := n->map node2Sedge();
+}
 
 mapping HCL::ProcessingUnit::speed2node() : Graph::Node {
 	shape := Graph::Shape::BOX;
@@ -75,7 +81,7 @@ mapping HCL::ProcessingUnit::speed2node() : Graph::Node {
 }
 
 mapping HCL::DisplayUnit::diag2node() : Graph::Node {
-	shape := Graph::Shape::BOX;
+	shape := Graph::Shape::OVAL;
 	label := self.diagonal.toString() + ' ' + 'Inch';
 }
 

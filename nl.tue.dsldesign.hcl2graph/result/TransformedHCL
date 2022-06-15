@@ -11,5 +11,5 @@
     <nodes label="CPU"/>
   </graph:Graph>
   <graph:Node label="HD" shape="OVAL"/>
-  <graph:Node label="20.0 Inch"/>
+  <graph:Node label="20.0 Inch" shape="OVAL"/>
 </xmi:XMI>
