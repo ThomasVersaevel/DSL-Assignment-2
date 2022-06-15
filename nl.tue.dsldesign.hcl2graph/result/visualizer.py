@@ -16,7 +16,7 @@ with open(filename, 'rb') as file:
 root = tree.getroot()
 
 structure_name = 'HCLgraph' # structure.findtext('./Name')
-graph = graphviz.Digraph(format='svg',comment='structure_name')
+graph = graphviz.Digraph(format='svg',comment='structure_name', node_attr={'shape': 'box'})
 
 graphloc = '{http://dsldesign.tue.nl/graph}'
 
@@ -36,20 +36,23 @@ i = 0
 # read all the structures
 for node in root.findall('nodes'): # root: #.findall('./Graph'):
     label = node.attrib['label']
-    nodeId = "//@nodes.ID={}".format(i)
+    nodeId = "//@nodes.{}".format(i)
     # n = Node(node.attrib['label'], i)
     # nodelist.append(n)
     
+    if 'shape' in node.attrib:
+        graph.node(nodeId, label, shape='oval')
     graph.node(nodeId, label)
+    
     i += 1
     
     print(node)
     
     for edge in node:
         target = edge.attrib['target']
-        print(edge)
-        print(target)
-        graph.edge(nodeId, target)
+        if 'style' in edge.attrib:
+            graph.edge(nodeId, target, style='dashed')
+        else: graph.edge(nodeId, target)
     
     
     # read the nodes of the structure
@@ -69,4 +72,4 @@ for node in root.findall('nodes'): # root: #.findall('./Graph'):
     #     if direction=='Double':
     #         graph.edge(id_2, id_1, label=description)
 
-graph.render(filename=structure_name)
+graph.render(filename=structure_name, view=True)

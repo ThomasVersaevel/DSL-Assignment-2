@@ -14,7 +14,7 @@ mapping HCL::Computer::hcl2graph() : Graph::Graph {
 	var components = self.component->map component2node();
 	nodes := Sequence {
 		self.map computer2node(components)
-	}->union( self.component->map component2node() );
+	}->union( components );
 	
 	// self.component->map component2node();
 //	nodes := self.map computer2node();
