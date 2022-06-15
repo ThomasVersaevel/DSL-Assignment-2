@@ -24,13 +24,13 @@
         eType="#//DisplayType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DisplayType">
-    <eLiterals name="HD"/>
+    <eLiterals name="HD" value="4"/>
     <eLiterals name="FullHD" value="1"/>
     <eLiterals name="FourK" value="2"/>
     <eLiterals name="FiveK" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="StorageType">
-    <eLiterals name="SSD"/>
+    <eLiterals name="SSD" value="2"/>
     <eLiterals name="HDD" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StorageDevice">
@@ -40,7 +40,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CacheMagnitude">
-    <eLiterals name="KiB"/>
+    <eLiterals name="KiB" value="2"/>
     <eLiterals name="MiB" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="L1">

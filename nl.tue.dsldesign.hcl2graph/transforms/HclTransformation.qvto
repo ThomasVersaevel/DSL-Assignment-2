@@ -11,20 +11,36 @@ main() {
 }
 
 mapping HCL::Computer::hcl2graph() : Graph::Graph {
-	object Graph::Node { label := self.label; shape := Graph::Shape::BOX };
-	nodes := self.component->map comp2Node();
+	nodes := Sequence {
+		self.map computer2node()
+	}->union( self.component->map component2node() );
+	
+	// self.component->map component2node();
+//	nodes := self.map computer2node();
 }
 
-mapping HCL::Component::comp2Node() : Graph::Node {
+mapping HCL::Computer::computer2node() : Graph::Node {
+	label := self.label;
+}
+
+mapping HCL::Component::component2node() : Graph::Node {
 	if (self.oclIsKindOf(HCL::Display)) {
-		object Graph::Node { shape := Graph::Shape::BOX; label := 'Displaytest' };
+//		object Graph::Node { shape := Graph::Shape::BOX; label := 'Displaytest' };
 		label := self.label;
-		shape := Graph::Shape::BOX;
+		shape := Graph::Shape::OVAL;
+		outEdges := self.map comp2edge();
 	} else if (self.oclIsKindOf(HCL::Processing)) {
-		object Graph::Node { shape := Graph::Shape::BOX; label := 'procesTest' };
+//		object Graph::Node { shape := Graph::Shape::BOX; label := 'procesTest' };
 		label := self.label;
 		shape := Graph::Shape::BOX;
 	}
-	
+}
+
+mapping HCL::Component::comp2edge() : Graph::Edge {
+	style := Graph::Style::DOTTED;
 	
 }
+
+//query getShape() : Graph::Shape {
+//	return 
+//}

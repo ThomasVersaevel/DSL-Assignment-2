@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore">
-  <graph:Graph>
-    <nodes label="my_display"/>
-    <nodes label="my_cpu"/>
-  </graph:Graph>
-  <graph:Node label="my_comp"/>
-  <graph:Node label="Displaytest"/>
-  <graph:Node label="procesTest"/>
-</xmi:XMI>
+<graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore">
+  <nodes label="my_comp"/>
+  <nodes label="my_display" shape="OVAL">
+    <outEdges style="DOTTED"/>
+  </nodes>
+  <nodes label="my_cpu"/>
+</graph:Graph>
