@@ -6,7 +6,7 @@
     <semanticResources>testModels/Model.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_ZlbuwOZ4EeyORd2lCkxiMA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZmCywOZ4EeyORd2lCkxiMA" name="hcl" repPath="#_Zl_vcOZ4EeyORd2lCkxiMA" changeId="db96d9ae-b425-4b85-8b3a-41f928ad464a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZmCywOZ4EeyORd2lCkxiMA" name="hcl" repPath="#_Zl_vcOZ4EeyORd2lCkxiMA" changeId="7b118f46-8b79-4d54-a25f-dec353cf4f46">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="hcl.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -734,25 +734,25 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_vgkXEOZ9EeyS54RKkCKb6g" name="FullHD" tooltipText="">
-        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FullHD"/>
-        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FullHD"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_vgkXEOZ9EeyS54RKkCKb6g" name="Full HD" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/Full%20HD"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/Full%20HD"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_vgkXEeZ9EeyS54RKkCKb6g" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_w2wG4OZ9EeyS54RKkCKb6g" name="FourK" tooltipText="">
-        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FourK"/>
-        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FourK"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_w2wG4OZ9EeyS54RKkCKb6g" name="4K" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/4K"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/4K"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_w2wG4eZ9EeyS54RKkCKb6g" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_z1KYwOZ9EeyS54RKkCKb6g" name="FiveK" tooltipText="">
-        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FiveK"/>
-        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FiveK"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_z1KYwOZ9EeyS54RKkCKb6g" name="5K" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/5K"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/5K"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_z1KYweZ9EeyS54RKkCKb6g" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>

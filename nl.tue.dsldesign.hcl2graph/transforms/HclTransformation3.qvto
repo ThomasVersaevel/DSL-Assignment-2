@@ -1,0 +1,110 @@
+modeltype HCL uses 'http://dsldesign.tue.nl/hcl';
+modeltype Graph uses 'http://dsldesign.tue.nl/graph';
+
+	
+transformation uml2relational(in hcl : HCL, out Graph);
+
+//transformation HclTransformation();
+
+main() {
+	hcl.rootObjects()[HCL::Model]->map model2graph();
+}
+
+mapping HCL::Model::model2graph() : Graph::Graph {
+	nodes := getNodes();
+	name := 'HCL Model';
+}
+
+
+query getNodes() : Sequence(Graph::Node) {
+	
+	var dispComponents = HCL::DisplayUnit.allInstances()->map displayWprops2node()->asSequence()->flatten();
+	
+	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
+	var dispDiagonals = getAllUniqueDiagonals()->map diag2node(dispComponents)->asSequence();
+//	var dispDiagonals = HCL::DisplayUnit.allInstances()->select()->map diag2node(dispComponents)->asSequence();
+	// var dispDiagonalsMin = dispDiagonals->select(e | dispDiagonals->one(d | d.label = e.label) )->asSequence();
+	
+	var display = mapDisplay(dispDiagonals);
+	
+//	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
+	
+	return Sequence{
+		display
+	}->union(dispDiagonals)->union(dispComponents)->union(computers);
+}
+
+//mapping HCL::Component::component2node() : Graph::Node
+//disjuncts HCL::DisplayUnit::display2node, HCL::Processing::processing2node{}
+
+helper HCL::DisplayUnit::displayWprops2node() :  Sequence(Graph::Node) {
+	var type = self.map type2node();
+	var comp = self.map display2node(type);
+	
+	return Sequence{ type, comp }
+	
+}
+
+query getAllUniqueDiagonals() : Sequence(HCL::DisplayUnit) {
+//	var solo = HCL::DisplayUnit.allInstances()->select(c | HCL::DisplayUnit.allInstances()->one(d | c.diagonal = d.diagonal))->asSequence();
+	
+	var diags = HCL::DisplayUnit.allInstances()->diagonal->asSet()->asSequence();
+	return diags-> getUnit();
+}
+
+helper Real::getUnit() : HCL::DisplayUnit {
+	return HCL::DisplayUnit.allInstances()->selectOne(e | e.diagonal = self);
+}
+
+mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
+	label := self.label;
+	shape := Graph::Shape::BOX;
+	outEdges := n->select(e | self.component->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
+	//outEdges := n->map node2Dedge();
+}
+
+// top display node
+query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
+	return object Graph::Node { 
+		label := 'Display'; 
+		shape := Graph::Shape::BOX; 
+		outEdges := n->node2edge(Graph::Style::SOLID);
+	}
+}
+
+// display diagonals
+mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := self.diagonal.toString() + ' ' + 'Inch';
+	outEdges := n->select(e | getAllUnitsWithDiagonal(self.diagonal)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
+}
+
+query getAllUnitsWithDiagonal(in d : Real) : Sequence(HCL::DisplayUnit) {
+	return HCL::DisplayUnit.allInstances()->select(e | e.diagonal = d)->asSequence();
+}
+
+// display components
+mapping HCL::DisplayUnit::display2node() : Graph::Node {
+	label := self.label;
+	shape := Graph::Shape::BOX;
+}
+
+mapping HCL::DisplayUnit::display2node(in t : Graph::Node) : Graph::Node {
+	label := self.label;
+	shape := Graph::Shape::BOX;
+	outEdges := t.node2edge(Graph::Style::DASHED);
+}
+
+
+mapping HCL::DisplayUnit::type2node() : Graph::Node {
+	shape := Graph::Shape::OVAL;
+	label := self.type.toString();
+}
+
+// EDGE
+helper Graph::Node::node2edge(in s : Graph::Style) : Graph::Edge {
+	return object Graph::Edge {
+		style := s;
+		target := self;	
+	}
+}

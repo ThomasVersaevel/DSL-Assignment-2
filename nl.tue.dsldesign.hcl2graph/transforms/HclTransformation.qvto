@@ -19,12 +19,12 @@ query getNodes() : Sequence(Graph::Node) {
 
 	// Display Component
 	var dispComponents = HCL::DisplayUnit.allInstances()->map displayWprops2node()->asSequence()->flatten();
-	var dispDiagonals = HCL::DisplayUnit.allInstances()->map diag2node(dispComponents)->asSequence();
+	var dispDiagonals = getAllUniqueDiagUnits()->map diag2node(dispComponents)->asSequence();
 	var display = mapDisplay(dispDiagonals);
 	
 	// CPU Component
 	var cpuComponents = HCL::ProcessingUnit.allInstances()->map cpuWprops2node()->asSequence()->flatten();
-	var cpuSpeed = HCL::ProcessingUnit.allInstances()->map speed2node(cpuComponents)->asSequence();
+	var cpuSpeed = getAllUniqueSpeedUnits()->map speed2node(cpuComponents)->asSequence();
 	//var cpuL1 = HCL::ProcessingUnit.allInstances()->map l12node(cpuComponents)->asSequence();
 	var cpu = mapCpu(cpuSpeed);
 	
@@ -45,6 +45,8 @@ mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Nod
 	outEdges := n->select(e | self.component->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
 }
 
+/** DISPLAY **/
+
 // top display node
 query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
 	return object Graph::Node { 
@@ -52,6 +54,17 @@ query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
 		shape := Graph::Shape::BOX; 
 		outEdges := n->node2edge(Graph::Style::SOLID);
 	}
+}
+
+// get all units with unique diagonal
+query getAllUniqueDiagUnits() : Sequence(HCL::DisplayUnit) {
+	var diags = HCL::DisplayUnit.allInstances()->diagonal->asSet()->asSequence();
+	return diags-> getDiagUnit();
+}
+
+// helps get unique diagonal unit
+helper Real::getDiagUnit() : HCL::DisplayUnit {
+	return HCL::DisplayUnit.allInstances()->selectOne(e | e.diagonal = self);
 }
 
 // helper for display properties
@@ -65,7 +78,12 @@ helper HCL::DisplayUnit::displayWprops2node() : Sequence(Graph::Node) {
 mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.diagonal.toString() + ' Inch';
-	outEdges := n->select(e | e.label = self.label)->node2edge(Graph::Style::SOLID);
+	outEdges := n->select(e | getAllUnitsWithDiagonal(self.diagonal)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
+}
+
+// queries all Display Units with a specific diagonal
+query getAllUnitsWithDiagonal(in d : Real) : Sequence(HCL::DisplayUnit) {
+	return HCL::DisplayUnit.allInstances()->select(e | e.diagonal = d)->asSequence();
 }
 
 // display components
@@ -81,7 +99,7 @@ mapping HCL::DisplayUnit::type2node() : Graph::Node {
 	label := self.type.toString();
 }
 
-// CPU
+/** CPU **/
 // top cpu node
 query mapCpu(in n : Sequence(Graph::Node)) : Graph::Node {
 	return object Graph::Node { 
@@ -89,6 +107,17 @@ query mapCpu(in n : Sequence(Graph::Node)) : Graph::Node {
 		shape := Graph::Shape::BOX; 
 		outEdges := n->node2edge(Graph::Style::SOLID);
 	}
+}
+
+// get all units with unique diagonal
+query getAllUniqueSpeedUnits() : Sequence(HCL::ProcessingUnit) {
+	var speeds = HCL::ProcessingUnit.allInstances()->speed->asSet()->asSequence();
+	return speeds-> getSpeedUnit();
+}
+
+// helps get unique diagonal unit
+helper Real::getSpeedUnit() : HCL::ProcessingUnit {
+	return HCL::ProcessingUnit.allInstances()->selectOne(e | e.speed = self);
 }
 
 helper HCL::ProcessingUnit::cpuWprops2node() : Sequence(Graph::Node) {
@@ -102,8 +131,13 @@ helper HCL::ProcessingUnit::cpuWprops2node() : Sequence(Graph::Node) {
 mapping HCL::ProcessingUnit::speed2node(in n : Sequence(Graph::Node)) : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.speed.toString() + ' GHz';
-	outEdges := n->select(e | e.label = self.label)->node2edge(Graph::Style::SOLID);
+	outEdges := n->select(e | getAllUnitsWithSpeed(self.speed)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
 }
+
+query getAllUnitsWithSpeed(in d : Real) : Sequence(HCL::ProcessingUnit) {
+	return HCL::ProcessingUnit.allInstances()->select(e | e.speed = d)->asSequence();
+}
+
 // cpu components
 mapping HCL::ProcessingUnit::cpu2node(in c : Graph::Node, in l : Graph::Node) : Graph::Node {
 	label := self.label;
@@ -122,7 +156,7 @@ mapping HCL::ProcessingUnit::l12node() : Graph::Node {
 	label := self.l1.size.toString() + ' ' + self.l1.magnitude.toString();
 }
 
-// EDGE
+/** EDGE **/
 helper Graph::Node::node2edge(in s : Graph::Style) : Graph::Edge {
 	return object Graph::Edge {
 		style := s;
