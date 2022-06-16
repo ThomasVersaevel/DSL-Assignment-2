@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore" name="HCL Model">
   <nodes label="Display">
-    <outEdges target="//@nodes.10"/>
-    <outEdges target="//@nodes.11"/>
+    <outEdges target="//@nodes.9"/>
   </nodes>
   <nodes label="CPU">
     <outEdges target="//@nodes.2"/>
-    <outEdges target="//@nodes.3"/>
   </nodes>
   <nodes label="4.6 GHz">
-    <outEdges target="//@nodes.9"/>
-  </nodes>
-  <nodes label="4.9 GHz">
-    <outEdges target="//@nodes.6"/>
+    <outEdges target="//@nodes.5"/>
+    <outEdges target="//@nodes.8"/>
   </nodes>
   <nodes label="6 cores" shape="OVAL"/>
   <nodes label="invalid invalid" shape="OVAL"/>
   <nodes label="my_cpu2">
-    <outEdges style="DASHED" target="//@nodes.5"/>
     <outEdges style="DASHED" target="//@nodes.4"/>
+    <outEdges style="DASHED" target="//@nodes.3"/>
   </nodes>
   <nodes label="4 cores" shape="OVAL"/>
   <nodes label="64 KiB" shape="OVAL"/>
   <nodes label="my_cpu">
-    <outEdges style="DASHED" target="//@nodes.8"/>
     <outEdges style="DASHED" target="//@nodes.7"/>
-  </nodes>
-  <nodes label="34.0 Inch">
-    <outEdges target="//@nodes.13"/>
+    <outEdges style="DASHED" target="//@nodes.6"/>
   </nodes>
   <nodes label="20.0 Inch">
+    <outEdges target="//@nodes.11"/>
+    <outEdges target="//@nodes.13"/>
     <outEdges target="//@nodes.15"/>
   </nodes>
   <nodes label="FullHD" shape="OVAL"/>
   <nodes label="my_disp2">
-    <outEdges style="DASHED" target="//@nodes.12"/>
+    <outEdges style="DASHED" target="//@nodes.10"/>
   </nodes>
   <nodes label="HD" shape="OVAL"/>
   <nodes label="my_display">
+    <outEdges style="DASHED" target="//@nodes.12"/>
+  </nodes>
+  <nodes label="HD" shape="OVAL"/>
+  <nodes label="disp_3">
     <outEdges style="DASHED" target="//@nodes.14"/>
   </nodes>
   <nodes label="my_computer">
+    <outEdges target="//@nodes.11"/>
     <outEdges target="//@nodes.13"/>
+    <outEdges target="//@nodes.5"/>
+    <outEdges target="//@nodes.8"/>
+  </nodes>
+  <nodes label="comp2">
     <outEdges target="//@nodes.15"/>
-    <outEdges target="//@nodes.6"/>
-    <outEdges target="//@nodes.9"/>
   </nodes>
 </graph:Graph>

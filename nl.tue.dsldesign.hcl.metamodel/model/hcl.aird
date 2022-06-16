@@ -3,11 +3,10 @@
   <viewpoint:DAnalysis uid="_ZjcxwOZ4EeyORd2lCkxiMA" selectedViews="_ZlbuwOZ4EeyORd2lCkxiMA" version="15.0.0.202201261500">
     <semanticResources>hcl.ecore</semanticResources>
     <semanticResources>hcl.genmodel</semanticResources>
-    <semanticResources>testModels/Model3.xmi</semanticResources>
-    <semanticResources>testModels/Model2.xmi</semanticResources>
+    <semanticResources>testModels/Model.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_ZlbuwOZ4EeyORd2lCkxiMA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZmCywOZ4EeyORd2lCkxiMA" name="hcl" repPath="#_Zl_vcOZ4EeyORd2lCkxiMA" changeId="315d4a4a-2886-48bd-9485-cf23c06e02be">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZmCywOZ4EeyORd2lCkxiMA" name="hcl" repPath="#_Zl_vcOZ4EeyORd2lCkxiMA" changeId="7b118f46-8b79-4d54-a25f-dec353cf4f46">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="hcl.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -735,9 +734,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_vgkXEOZ9EeyS54RKkCKb6g" name="FullHD" tooltipText="">
-        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FullHD"/>
-        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/FullHD"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_vgkXEOZ9EeyS54RKkCKb6g" name="Full HD" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/Full%20HD"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="hcl.ecore#//DisplayType/Full%20HD"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_vgkXEeZ9EeyS54RKkCKb6g" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
