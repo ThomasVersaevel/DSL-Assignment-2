@@ -1,22 +1,45 @@
 // structure_name
 digraph {
 	node [shape=box]
-	"//@nodes.0" [label=Display]
-	"//@nodes.0" -> "//@nodes.1"
-	"//@nodes.0" -> "//@nodes.2"
-	"//@nodes.1" [label="34.0 Inch"]
-	"//@nodes.1" -> "//@nodes.5"
-	"//@nodes.2" [label="20.0 Inch"]
-	"//@nodes.2" -> "//@nodes.3"
-	"//@nodes.3" [label=my_display]
-	"//@nodes.3" -> "//@nodes.7" [style=dashed]
-	"//@nodes.4" [label=FullHD shape=oval]
-	"//@nodes.4" [label=FullHD]
-	"//@nodes.5" [label=my_disp2]
-	"//@nodes.5" -> "//@nodes.4" [style=dashed]
-	"//@nodes.6" [label=my_computer]
-	"//@nodes.6" -> "//@nodes.3"
-	"//@nodes.6" -> "//@nodes.5"
-	"//@nodes.7" [label=HD shape=oval]
-	"//@nodes.7" [label=HD]
+		"//@nodes.0" [label=Display]
+			"//@nodes.0" -> "//@nodes.10"
+			"//@nodes.0" -> "//@nodes.11"
+		"//@nodes.1" [label=CPU]
+			"//@nodes.1" -> "//@nodes.2"
+			"//@nodes.1" -> "//@nodes.3"
+		"//@nodes.2" [label="4.6 GHz"]
+			"//@nodes.2" -> "//@nodes.9"
+		"//@nodes.3" [label="4.9 GHz"]
+			"//@nodes.3" -> "//@nodes.6"
+		"//@nodes.4" [label="6 cores" shape=oval]
+		"//@nodes.4" [label="6 cores"]
+		"//@nodes.5" [label="invalid invalid" shape=oval]
+		"//@nodes.5" [label="invalid invalid"]
+		"//@nodes.6" [label=my_cpu2]
+			"//@nodes.6" -> "//@nodes.5" [style=dashed]
+			"//@nodes.6" -> "//@nodes.4" [style=dashed]
+		"//@nodes.7" [label="4 cores" shape=oval]
+		"//@nodes.7" [label="4 cores"]
+		"//@nodes.8" [label="64 KiB" shape=oval]
+		"//@nodes.8" [label="64 KiB"]
+		"//@nodes.9" [label=my_cpu]
+			"//@nodes.9" -> "//@nodes.8" [style=dashed]
+			"//@nodes.9" -> "//@nodes.7" [style=dashed]
+		"//@nodes.10" [label="20.0 Inch"]
+			"//@nodes.10" -> "//@nodes.15"
+		"//@nodes.11" [label="34.0 Inch"]
+			"//@nodes.11" -> "//@nodes.13"
+		"//@nodes.12" [label=FullHD shape=oval]
+		"//@nodes.12" [label=FullHD]
+		"//@nodes.13" [label=my_disp2]
+			"//@nodes.13" -> "//@nodes.12" [style=dashed]
+		"//@nodes.14" [label=HD shape=oval]
+		"//@nodes.14" [label=HD]
+		"//@nodes.15" [label=my_display]
+			"//@nodes.15" -> "//@nodes.14" [style=dashed]
+		"//@nodes.16" [label=my_computer]
+			"//@nodes.16" -> "//@nodes.13"
+			"//@nodes.16" -> "//@nodes.15"
+			"//@nodes.16" -> "//@nodes.6"
+			"//@nodes.16" -> "//@nodes.9"
 }
