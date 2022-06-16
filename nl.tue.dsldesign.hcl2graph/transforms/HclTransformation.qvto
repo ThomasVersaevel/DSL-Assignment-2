@@ -1,20 +1,19 @@
 modeltype HCL uses 'http://dsldesign.tue.nl/hcl';
 modeltype Graph uses 'http://dsldesign.tue.nl/graph';
 
-	
 transformation uml2relational(in hcl : HCL, out Graph);
-
-//transformation HclTransformation();
 
 main() {
 	hcl.rootObjects()[HCL::Model]->map model2graph();
 }
 
+// main mapping
 mapping HCL::Model::model2graph() : Graph::Graph {
 	nodes := getNodes();
 	name := 'HCL Model';
 }
 
+// create all nodes
 query getNodes() : Sequence(Graph::Node) {
 
 	// Display Component
@@ -25,20 +24,21 @@ query getNodes() : Sequence(Graph::Node) {
 	// CPU Component
 	var cpuComponents = HCL::ProcessingUnit.allInstances()->map cpuWprops2node()->asSequence()->flatten();
 	var cpuSpeed = getAllUniqueSpeedUnits()->map speed2node(cpuComponents)->asSequence();
-	//var cpuL1 = HCL::ProcessingUnit.allInstances()->map l12node(cpuComponents)->asSequence();
 	var cpu = mapCpu(cpuSpeed);
 	
 	// Computers
 	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents->union(cpuComponents))->asSequence();
 	
+	// Gather and return all nodes
 	return Sequence{
 		display,
 		cpu
-	}->union(cpuSpeed)->union(cpuComponents)->union(dispDiagonals)->union(dispComponents)->union(computers); //->union(components)->union(speednodes);
+	}->union(cpuSpeed)->union(cpuComponents)->union(dispDiagonals)->union(dispComponents)->union(computers);
 }
 
 
 // top computer
+// in: processing and display components
 mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
@@ -48,6 +48,7 @@ mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Nod
 /** DISPLAY **/
 
 // top display node
+// in: all diagonal nodes
 query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
 	return object Graph::Node { 
 		label := 'Display'; 
@@ -75,25 +76,29 @@ helper HCL::DisplayUnit::displayWprops2node() : Sequence(Graph::Node) {
 }
 
 // display diagonals
+// in: display component and property nodes
 mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.diagonal.toString() + ' Inch';
+	// creates an edge to every component with corresponding speed
 	outEdges := n->select(e | getAllUnitsWithDiagonal(self.diagonal)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
 }
 
 // queries all Display Units with a specific diagonal
+// in: diagonal
 query getAllUnitsWithDiagonal(in d : Real) : Sequence(HCL::DisplayUnit) {
 	return HCL::DisplayUnit.allInstances()->select(e | e.diagonal = d)->asSequence();
 }
 
-// display components
+// maps display unit components to node 
+// in: oval style properties from component
 mapping HCL::DisplayUnit::display2node(in t : Graph::Node) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
 	outEdges := t.node2edge(Graph::Style::DASHED);
 }
 
-
+// maps display type to node
 mapping HCL::DisplayUnit::type2node() : Graph::Node {
 	shape := Graph::Shape::OVAL;
 	label := self.type.toString();
@@ -101,6 +106,7 @@ mapping HCL::DisplayUnit::type2node() : Graph::Node {
 
 /** CPU **/
 // top cpu node
+// in: processing speed nodes
 query mapCpu(in n : Sequence(Graph::Node)) : Graph::Node {
 	return object Graph::Node { 
 		label := 'CPU'; 
@@ -120,6 +126,7 @@ helper Real::getSpeedUnit() : HCL::ProcessingUnit {
 	return HCL::ProcessingUnit.allInstances()->selectOne(e | e.speed = self);
 }
 
+// get a processing unit with all oval properties already linked
 helper HCL::ProcessingUnit::cpuWprops2node() : Sequence(Graph::Node) {
 	var cores = self.map cores2node();
 	var l1 = self.map l12node();
@@ -128,35 +135,41 @@ helper HCL::ProcessingUnit::cpuWprops2node() : Sequence(Graph::Node) {
 }
 
 // CPU speed
+// in: processing component and oval propertie nodes
 mapping HCL::ProcessingUnit::speed2node(in n : Sequence(Graph::Node)) : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.speed.toString() + ' GHz';
+	// creates an edge to every component with corresponding speed
 	outEdges := n->select(e | getAllUnitsWithSpeed(self.speed)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
 }
 
+// get all processing units with specific speed
 query getAllUnitsWithSpeed(in d : Real) : Sequence(HCL::ProcessingUnit) {
 	return HCL::ProcessingUnit.allInstances()->select(e | e.speed = d)->asSequence();
 }
 
 // cpu components
+// in: oval propertie nodes: cores and L1 cache
 mapping HCL::ProcessingUnit::cpu2node(in c : Graph::Node, in l : Graph::Node) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
 	outEdges := Sequence{l, c}->node2edge(Graph::Style::DASHED);
-	//outEdges := c->node2edge(Graph::Style::DASHED);
 }
 
+// processing cores
 mapping HCL::ProcessingUnit::cores2node() : Graph::Node {
 	shape := Graph::Shape::OVAL;
 	label := self.cores.toString() + ' cores';
 }
+
+// processing L1 cache
 mapping HCL::ProcessingUnit::l12node() : Graph::Node {
 	shape := Graph::Shape::OVAL;
-	//label:= self->select(e | e = L1)
 	label := self.l1.size.toString() + ' ' + self.l1.magnitude.toString();
 }
 
 /** EDGE **/
+// creates a edge from input -> self
 helper Graph::Node::node2edge(in s : Graph::Style) : Graph::Edge {
 	return object Graph::Edge {
 		style := s;
