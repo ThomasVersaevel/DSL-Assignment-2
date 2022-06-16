@@ -53,8 +53,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="L2">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
-        changeable="false"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="magnitude" unique="false"
         lowerBound="1" eType="#//CacheMagnitude"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="processingunit" lowerBound="1"

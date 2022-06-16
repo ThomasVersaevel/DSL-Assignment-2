@@ -4,6 +4,7 @@
     <semanticResources>hcl.ecore</semanticResources>
     <semanticResources>hcl.genmodel</semanticResources>
     <semanticResources>testModels/Model.xmi</semanticResources>
+    <semanticResources>testModels/Model2.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_ZlbuwOZ4EeyORd2lCkxiMA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZmCywOZ4EeyORd2lCkxiMA" name="hcl" repPath="#_Zl_vcOZ4EeyORd2lCkxiMA" changeId="7b118f46-8b79-4d54-a25f-dec353cf4f46">

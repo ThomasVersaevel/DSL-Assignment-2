@@ -7,33 +7,23 @@
   <computer
       label="my_computer">
     <component
-        xsi:type="hcl:DisplayUnit"
-        label="my_display"
-        diagonal="20.0"/>
-    <component
         xsi:type="hcl:ProcessingUnit"
-        label="my_cpu"
+        label="my_CPU"
         cores="4"
-        speed="4.6">
+        speed="2.0">
       <l1 size="64"
-          processingunit="//@computer.0/@component.1"/>
+          processingunit="//@computer.0/@component.0"/>
     </component>
     <component
-        xsi:type="hcl:ProcessingUnit"
-        label="my_cpu2"
-        cores="6"
-        speed="4.6"/>
+        xsi:type="hcl:StorageUnit"
+        label="storage1">
+      <storagedevice
+          size="500"/>
+    </component>
     <component
         xsi:type="hcl:DisplayUnit"
-        label="my_disp2"
-        diagonal="20.0"
-        type="FullHD"/>
-  </computer>
-  <computer
-      label="comp2">
-    <component
-        xsi:type="hcl:DisplayUnit"
-        label="disp_3"
-        diagonal="20.0"/>
+        label="my_display"
+        diagonal="30.0"
+        type="5K"/>
   </computer>
 </hcl:Model>

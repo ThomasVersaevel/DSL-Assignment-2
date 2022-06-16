@@ -1,0 +1,26 @@
+// structure_name
+digraph {
+	node [shape=box]
+		"//@nodes.0" [label=Display]
+			"//@nodes.0" -> "//@nodes.6"
+		"//@nodes.1" [label=CPU]
+			"//@nodes.1" -> "//@nodes.2"
+		"//@nodes.2" [label="2.0 GHz"]
+			"//@nodes.2" -> "//@nodes.5"
+		"//@nodes.3" [label="4 cores" shape=oval]
+		"//@nodes.3" [label="4 cores"]
+		"//@nodes.4" [label="64 KiB" shape=oval]
+		"//@nodes.4" [label="64 KiB"]
+		"//@nodes.5" [label=my_CPU]
+			"//@nodes.5" -> "//@nodes.4" [style=dashed]
+			"//@nodes.5" -> "//@nodes.3" [style=dashed]
+		"//@nodes.6" [label="30.0 Inch"]
+			"//@nodes.6" -> "//@nodes.8"
+		"//@nodes.7" [label="5K" shape=oval]
+		"//@nodes.7" [label="5K"]
+		"//@nodes.8" [label=my_display]
+			"//@nodes.8" -> "//@nodes.7" [style=dashed]
+		"//@nodes.9" [label=my_computer]
+			"//@nodes.9" -> "//@nodes.8"
+			"//@nodes.9" -> "//@nodes.5"
+}

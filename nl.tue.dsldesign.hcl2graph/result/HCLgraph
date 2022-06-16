@@ -1,48 +1,80 @@
 // structure_name
 digraph {
 	node [shape=box]
-	"//@nodes.0" [label=Display]
-	"//@nodes.0" -> "//@nodes.9"
-	"//@nodes.1" [label=CPU]
-	"//@nodes.1" -> "//@nodes.2"
-	"//@nodes.2" [label="4.6 GHz"]
-	"//@nodes.2" -> "//@nodes.5"
-	"//@nodes.2" -> "//@nodes.8"
-	"//@nodes.3" [label="6 cores" shape=oval]
-	"//@nodes.3" [label="6 cores"]
-	"//@nodes.4" [label="invalid invalid" shape=oval]
-	"//@nodes.4" [label="invalid invalid"]
-	"//@nodes.5" [label=my_cpu2]
-	"//@nodes.5" -> "//@nodes.4" [style=dashed]
-	"//@nodes.5" -> "//@nodes.3" [style=dashed]
-	"//@nodes.6" [label="4 cores" shape=oval]
-	"//@nodes.6" [label="4 cores"]
-	"//@nodes.7" [label="64 KiB" shape=oval]
-	"//@nodes.7" [label="64 KiB"]
-	"//@nodes.8" [label=my_cpu]
-	"//@nodes.8" -> "//@nodes.7" [style=dashed]
-	"//@nodes.8" -> "//@nodes.6" [style=dashed]
-	"//@nodes.9" [label="20.0 Inch"]
-	"//@nodes.9" -> "//@nodes.11"
-	"//@nodes.9" -> "//@nodes.13"
-	"//@nodes.9" -> "//@nodes.15"
-	"//@nodes.10" [label=FullHD shape=oval]
-	"//@nodes.10" [label=FullHD]
-	"//@nodes.11" [label=my_disp2]
-	"//@nodes.11" -> "//@nodes.10" [style=dashed]
-	"//@nodes.12" [label=HD shape=oval]
-	"//@nodes.12" [label=HD]
-	"//@nodes.13" [label=my_display]
-	"//@nodes.13" -> "//@nodes.12" [style=dashed]
-	"//@nodes.14" [label=HD shape=oval]
-	"//@nodes.14" [label=HD]
-	"//@nodes.15" [label=disp_3]
-	"//@nodes.15" -> "//@nodes.14" [style=dashed]
-	"//@nodes.16" [label=my_computer]
-	"//@nodes.16" -> "//@nodes.11"
-	"//@nodes.16" -> "//@nodes.13"
-	"//@nodes.16" -> "//@nodes.5"
-	"//@nodes.16" -> "//@nodes.8"
-	"//@nodes.17" [label=comp2]
-	"//@nodes.17" -> "//@nodes.15"
+		"//@nodes.0" [label=Display]
+			"//@nodes.0" -> "//@nodes.17"
+			"//@nodes.0" -> "//@nodes.18"
+			"//@nodes.0" -> "//@nodes.19"
+		"//@nodes.1" [label=CPU]
+			"//@nodes.1" -> "//@nodes.2"
+			"//@nodes.1" -> "//@nodes.3"
+			"//@nodes.1" -> "//@nodes.4"
+		"//@nodes.2" [label="4.6 GHz"]
+			"//@nodes.2" -> "//@nodes.10"
+			"//@nodes.2" -> "//@nodes.16"
+		"//@nodes.3" [label="3.6 GHz"]
+			"//@nodes.3" -> "//@nodes.13"
+		"//@nodes.4" [label="4.3 GHz"]
+			"//@nodes.4" -> "//@nodes.7"
+		"//@nodes.5" [label="4 cores" shape=oval]
+		"//@nodes.5" [label="4 cores"]
+		"//@nodes.6" [label="48 KiB" shape=oval]
+		"//@nodes.6" [label="48 KiB"]
+		"//@nodes.7" [label=cpu2]
+			"//@nodes.7" -> "//@nodes.6" [style=dashed]
+			"//@nodes.7" -> "//@nodes.5" [style=dashed]
+		"//@nodes.8" [label="6 cores" shape=oval]
+		"//@nodes.8" [label="6 cores"]
+		"//@nodes.9" [label="64 KiB" shape=oval]
+		"//@nodes.9" [label="64 KiB"]
+		"//@nodes.10" [label="2cpu1"]
+			"//@nodes.10" -> "//@nodes.9" [style=dashed]
+			"//@nodes.10" -> "//@nodes.8" [style=dashed]
+		"//@nodes.11" [label="4 cores" shape=oval]
+		"//@nodes.11" [label="4 cores"]
+		"//@nodes.12" [label="64 KiB" shape=oval]
+		"//@nodes.12" [label="64 KiB"]
+		"//@nodes.13" [label=cpu1]
+			"//@nodes.13" -> "//@nodes.12" [style=dashed]
+			"//@nodes.13" -> "//@nodes.11" [style=dashed]
+		"//@nodes.14" [label="4 cores" shape=oval]
+		"//@nodes.14" [label="4 cores"]
+		"//@nodes.15" [label="32 KiB" shape=oval]
+		"//@nodes.15" [label="32 KiB"]
+		"//@nodes.16" [label="2cpu2"]
+			"//@nodes.16" -> "//@nodes.15" [style=dashed]
+			"//@nodes.16" -> "//@nodes.14" [style=dashed]
+		"//@nodes.17" [label="32.0 Inch"]
+			"//@nodes.17" -> "//@nodes.27"
+		"//@nodes.18" [label="24.0 Inch"]
+			"//@nodes.18" -> "//@nodes.21"
+			"//@nodes.18" -> "//@nodes.23"
+		"//@nodes.19" [label="27.0 Inch"]
+			"//@nodes.19" -> "//@nodes.25"
+		"//@nodes.20" [label="Full HD" shape=oval]
+		"//@nodes.20" [label="Full HD"]
+		"//@nodes.21" [label=display1]
+			"//@nodes.21" -> "//@nodes.20" [style=dashed]
+		"//@nodes.22" [label="Full HD" shape=oval]
+		"//@nodes.22" [label="Full HD"]
+		"//@nodes.23" [label="2display1"]
+			"//@nodes.23" -> "//@nodes.22" [style=dashed]
+		"//@nodes.24" [label=HD shape=oval]
+		"//@nodes.24" [label=HD]
+		"//@nodes.25" [label="2display2"]
+			"//@nodes.25" -> "//@nodes.24" [style=dashed]
+		"//@nodes.26" [label="4K" shape=oval]
+		"//@nodes.26" [label="4K"]
+		"//@nodes.27" [label=display2]
+			"//@nodes.27" -> "//@nodes.26" [style=dashed]
+		"//@nodes.28" [label=comp2]
+			"//@nodes.28" -> "//@nodes.23"
+			"//@nodes.28" -> "//@nodes.25"
+			"//@nodes.28" -> "//@nodes.10"
+			"//@nodes.28" -> "//@nodes.16"
+		"//@nodes.29" [label=comp1]
+			"//@nodes.29" -> "//@nodes.21"
+			"//@nodes.29" -> "//@nodes.27"
+			"//@nodes.29" -> "//@nodes.7"
+			"//@nodes.29" -> "//@nodes.13"
 }

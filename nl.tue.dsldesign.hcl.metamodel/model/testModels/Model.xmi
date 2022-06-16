@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hcl:Model xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:hcl="http://www.example.org/hcl"
+    xsi:schemaLocation="http://www.example.org/hcl ../hcl.ecore">
+  <computer
+      label="comp1">
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="cpu1"
+        cores="4"
+        speed="3.6">
+      <l1 size="64"
+          processingunit="//@computer.0/@component.0"/>
+      <l2 size="8"
+          magnitude="MiB"
+          processingunit="//@computer.0/@component.0"/>
+      <l3 size="16"
+          magnitude="MiB"
+          processingunit="//@computer.0/@component.0"/>
+    </component>
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="cpu2"
+        cores="4"
+        speed="4.3">
+      <l1 size="48"
+          processingunit="//@computer.0/@component.1"/>
+      <l2 size="4"
+          magnitude="MiB"
+          processingunit="//@computer.0/@component.1"/>
+      <l3 size="12"
+          magnitude="MiB"
+          processingunit="//@computer.0/@component.1"/>
+    </component>
+    <component
+        xsi:type="hcl:StorageUnit"
+        label="storage1">
+      <storagedevice
+          size="500"/>
+    </component>
+    <component
+        xsi:type="hcl:DisplayUnit"
+        label="display1"
+        diagonal="24.0"
+        type="Full HD"/>
+    <component
+        xsi:type="hcl:DisplayUnit"
+        label="display2"
+        diagonal="32.0"
+        type="4K"/>
+  </computer>
+  <computer
+      label="comp2">
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="2cpu1"
+        cores="6"
+        speed="4.6">
+      <l1 size="64"
+          processingunit="//@computer.1/@component.0"/>
+      <l2 size="16"
+          magnitude="MiB"
+          processingunit="//@computer.1/@component.0"/>
+      <l3 size="32"
+          magnitude="MiB"
+          processingunit="//@computer.1/@component.0"/>
+    </component>
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="2cpu2"
+        cores="4"
+        speed="4.6">
+      <l1 size="32"
+          processingunit="//@computer.1/@component.1"/>
+      <l2 size="8"
+          magnitude="MiB"
+          processingunit="//@computer.1/@component.1"/>
+      <l3 size="16"
+          magnitude="MiB"
+          processingunit="//@computer.1/@component.1"/>
+    </component>
+    <component
+        xsi:type="hcl:StorageUnit"
+        label="2storage1">
+      <storagedevice
+          size="500"/>
+    </component>
+    <component
+        xsi:type="hcl:DisplayUnit"
+        label="2display1"
+        diagonal="24.0"
+        type="Full HD"/>
+    <component
+        xsi:type="hcl:DisplayUnit"
+        label="2display2"
+        diagonal="27.0"/>
+  </computer>
+</hcl:Model>
