@@ -1,16 +1,22 @@
 // structure_name
 digraph {
 	node [shape=box]
-		"//@nodes.0" [label=Display]
-			"//@nodes.0" -> "//@nodes.1"
-			"//@nodes.0" -> "//@nodes.2"
-		"//@nodes.1" [label="34.0 Inch"]
-			"//@nodes.1" -> "//@nodes.4"
-		"//@nodes.2" [label="20.0 Inch"]
-			"//@nodes.2" -> "//@nodes.3"
-		"//@nodes.3" [label=my_display]
-		"//@nodes.4" [label=my_disp2]
-		"//@nodes.5" [label=my_computer]
-			"//@nodes.5" -> "//@nodes.3"
-			"//@nodes.5" -> "//@nodes.4"
+	"//@nodes.0" [label=Display]
+	"//@nodes.0" -> "//@nodes.1"
+	"//@nodes.0" -> "//@nodes.2"
+	"//@nodes.1" [label="34.0 Inch"]
+	"//@nodes.1" -> "//@nodes.5"
+	"//@nodes.2" [label="20.0 Inch"]
+	"//@nodes.2" -> "//@nodes.3"
+	"//@nodes.3" [label=my_display]
+	"//@nodes.3" -> "//@nodes.7" [style=dashed]
+	"//@nodes.4" [label=FullHD shape=oval]
+	"//@nodes.4" [label=FullHD]
+	"//@nodes.5" [label=my_disp2]
+	"//@nodes.5" -> "//@nodes.4" [style=dashed]
+	"//@nodes.6" [label=my_computer]
+	"//@nodes.6" -> "//@nodes.3"
+	"//@nodes.6" -> "//@nodes.5"
+	"//@nodes.7" [label=HD shape=oval]
+	"//@nodes.7" [label=HD]
 }

@@ -26,7 +26,11 @@ query getNodes() : Sequence(Graph::Node) {
 //	var properties = components->
 	// var cpu = object Graph::Node { label := 'CPU'; shape := Graph::Shape::BOX; };
 	
-	var dispComponents = HCL::DisplayUnit.allInstances()->map display2node()->asSequence();
+	var dispNodes = HCL::DisplayUnit.allInstances()->map displayWprops2node()->asSequence()->flatten();
+	var dispComponents = dispNodes->reject(e | e.label = 'HD' )->asSequence();
+	var dispTypes = dispNodes->select(e | e.label = 'HD' )->asSequence();
+	//var dispComponents = HCL::DisplayUnit.allInstances()->map display2node()->asSequence();
+	
 	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
 	var dispDiagonals = HCL::DisplayUnit.allInstances()->map diag2node(dispComponents)->asSequence();
 	var display = mapDisplay(dispDiagonals);
@@ -35,11 +39,19 @@ query getNodes() : Sequence(Graph::Node) {
 	
 	return Sequence{
 		display
-	}->union(dispDiagonals)->union(dispComponents)->union(computers); //->union(components)->union(speednodes);
+	}->union(dispDiagonals)->union(dispComponents)->union(computers)->union(dispTypes); //->union(components)->union(speednodes);
 }
 
 //mapping HCL::Component::component2node() : Graph::Node
 //disjuncts HCL::DisplayUnit::display2node, HCL::Processing::processing2node{}
+
+helper HCL::DisplayUnit::displayWprops2node() :  Sequence(Graph::Node) {
+	var type = self.map type2node();
+	var comp = self.map display2node(type);
+	
+	return Sequence{ type, comp }
+	
+}
 
 mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
@@ -68,6 +80,18 @@ mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node 
 mapping HCL::DisplayUnit::display2node() : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
+}
+
+mapping HCL::DisplayUnit::display2node(in t : Graph::Node) : Graph::Node {
+	label := self.label;
+	shape := Graph::Shape::BOX;
+	outEdges := t.node2edge(Graph::Style::DASHED);
+}
+
+
+mapping HCL::DisplayUnit::type2node() : Graph::Node {
+	shape := Graph::Shape::OVAL;
+	label := self.type.toString();
 }
 
 // EDGE

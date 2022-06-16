@@ -5,15 +5,21 @@
     <outEdges target="//@nodes.2"/>
   </nodes>
   <nodes label="34.0 Inch">
-    <outEdges target="//@nodes.4"/>
+    <outEdges target="//@nodes.5"/>
   </nodes>
   <nodes label="20.0 Inch">
     <outEdges target="//@nodes.3"/>
   </nodes>
-  <nodes label="my_display"/>
-  <nodes label="my_disp2"/>
+  <nodes label="my_display">
+    <outEdges style="DASHED" target="//@nodes.7"/>
+  </nodes>
+  <nodes label="FullHD" shape="OVAL"/>
+  <nodes label="my_disp2">
+    <outEdges style="DASHED" target="//@nodes.4"/>
+  </nodes>
   <nodes label="my_computer">
     <outEdges target="//@nodes.3"/>
-    <outEdges target="//@nodes.4"/>
+    <outEdges target="//@nodes.5"/>
   </nodes>
+  <nodes label="HD" shape="OVAL"/>
 </graph:Graph>
