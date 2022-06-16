@@ -12,5 +12,8 @@
   </nodes>
   <nodes label="my_display"/>
   <nodes label="my_disp2"/>
-  <nodes label="my_computer"/>
+  <nodes label="my_computer">
+    <outEdges target="//@nodes.3"/>
+    <outEdges target="//@nodes.4"/>
+  </nodes>
 </graph:Graph>

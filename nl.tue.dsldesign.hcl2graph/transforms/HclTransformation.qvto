@@ -44,7 +44,8 @@ query getNodes() : Sequence(Graph::Node) {
 mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
-	outEdges := n->select(e | self.component->exists(c | c.label = e.label))->map node2Sedge();
+	outEdges := n->select(e | self.component->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
+	//outEdges := n->map node2Dedge();
 }
 
 // top display node
@@ -52,7 +53,7 @@ query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
 	return object Graph::Node { 
 		label := 'Display'; 
 		shape := Graph::Shape::BOX; 
-		outEdges := n->map node2Sedge();
+		outEdges := n->node2edge(Graph::Style::SOLID);
 	}
 }
 
@@ -60,7 +61,7 @@ query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
 mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.diagonal.toString() + ' ' + 'Inch';
-	outEdges := n->select(e | e.label = self.label)->map node2Sedge();
+	outEdges := n->select(e | e.label = self.label)->node2edge(Graph::Style::SOLID);
 }
 
 // display components
@@ -69,15 +70,10 @@ mapping HCL::DisplayUnit::display2node() : Graph::Node {
 	shape := Graph::Shape::BOX;
 }
 
-
-// solid EDGE
-mapping Graph::Node::node2Sedge() : Graph::Edge {
-	style := Graph::Style::SOLID;
-	target := self;	
-}
-
-// dashed EDGE
-mapping Graph::Node::node2Dedge() : Graph::Edge {
-	style := Graph::Style::DASHED;
-	target := self;	
+// EDGE
+helper Graph::Node::node2edge(in s : Graph::Style) : Graph::Edge {
+	return object Graph::Edge {
+		style := s;
+		target := self;	
+	}
 }
