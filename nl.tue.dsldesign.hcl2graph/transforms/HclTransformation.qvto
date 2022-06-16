@@ -21,15 +21,17 @@ query getNodes() : Sequence(Graph::Node) {
 	var dispComponents = HCL::DisplayUnit.allInstances()->map displayWprops2node()->asSequence()->flatten();
 	
 	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
-	var dispDiagonals = HCL::DisplayUnit.allInstances()->map diag2node(dispComponents)->asSequence();
-	var dispDiagonalsMin = dispDiagonals->select(e | dispDiagonals->one(d | d.label = e.label) )->asSequence();
-	var display = mapDisplay(dispDiagonalsMin);
+	var dispDiagonals = getAllUniqueDiagonals()->map diag2node(dispComponents)->asSequence();
+//	var dispDiagonals = HCL::DisplayUnit.allInstances()->select()->map diag2node(dispComponents)->asSequence();
+	// var dispDiagonalsMin = dispDiagonals->select(e | dispDiagonals->one(d | d.label = e.label) )->asSequence();
+	
+	var display = mapDisplay(dispDiagonals);
 	
 //	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
 	
 	return Sequence{
 		display
-	}->union(dispDiagonalsMin)->union(dispComponents)->union(computers);
+	}->union(dispDiagonals)->union(dispComponents)->union(computers);
 }
 
 //mapping HCL::Component::component2node() : Graph::Node
@@ -41,6 +43,17 @@ helper HCL::DisplayUnit::displayWprops2node() :  Sequence(Graph::Node) {
 	
 	return Sequence{ type, comp }
 	
+}
+
+query getAllUniqueDiagonals() : Sequence(HCL::DisplayUnit) {
+//	var solo = HCL::DisplayUnit.allInstances()->select(c | HCL::DisplayUnit.allInstances()->one(d | c.diagonal = d.diagonal))->asSequence();
+	
+	var diags = HCL::DisplayUnit.allInstances()->diagonal->asSet()->asSequence();
+	return diags-> getUnit();
+}
+
+helper Real::getUnit() : HCL::DisplayUnit {
+	return HCL::DisplayUnit.allInstances()->selectOne(e | e.diagonal = self);
 }
 
 mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
@@ -63,10 +76,10 @@ query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
 mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node {
 	shape := Graph::Shape::BOX;
 	label := self.diagonal.toString() + ' ' + 'Inch';
-	outEdges := n->select(e | getAllDiagonals(self.diagonal)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
+	outEdges := n->select(e | getAllUnitsWithDiagonal(self.diagonal)->exists(c | c.label = e.label))->node2edge(Graph::Style::SOLID);
 }
 
-query getAllDiagonals(in d : Real) : Sequence(HCL::DisplayUnit) {
+query getAllUnitsWithDiagonal(in d : Real) : Sequence(HCL::DisplayUnit) {
 	return HCL::DisplayUnit.allInstances()->select(e | e.diagonal = d)->asSequence();
 }
 
