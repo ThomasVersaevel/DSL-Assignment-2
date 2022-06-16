@@ -26,11 +26,11 @@
     <outEdges style="DASHED" target="//@nodes.8"/>
     <outEdges style="DASHED" target="//@nodes.7"/>
   </nodes>
-  <nodes label="20.0 Inch">
-    <outEdges target="//@nodes.15"/>
-  </nodes>
   <nodes label="34.0 Inch">
     <outEdges target="//@nodes.13"/>
+  </nodes>
+  <nodes label="20.0 Inch">
+    <outEdges target="//@nodes.15"/>
   </nodes>
   <nodes label="FullHD" shape="OVAL"/>
   <nodes label="my_disp2">

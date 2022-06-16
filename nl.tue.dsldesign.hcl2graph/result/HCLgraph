@@ -25,10 +25,10 @@ digraph {
 		"//@nodes.9" [label=my_cpu]
 			"//@nodes.9" -> "//@nodes.8" [style=dashed]
 			"//@nodes.9" -> "//@nodes.7" [style=dashed]
-		"//@nodes.10" [label="20.0 Inch"]
-			"//@nodes.10" -> "//@nodes.15"
-		"//@nodes.11" [label="34.0 Inch"]
-			"//@nodes.11" -> "//@nodes.13"
+		"//@nodes.10" [label="34.0 Inch"]
+			"//@nodes.10" -> "//@nodes.13"
+		"//@nodes.11" [label="20.0 Inch"]
+			"//@nodes.11" -> "//@nodes.15"
 		"//@nodes.12" [label=FullHD shape=oval]
 		"//@nodes.12" [label=FullHD]
 		"//@nodes.13" [label=my_disp2]
