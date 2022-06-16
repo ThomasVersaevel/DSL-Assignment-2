@@ -11,127 +11,64 @@ main() {
 }
 
 mapping HCL::Model::model2graph() : Graph::Graph {
-//	var nodelist = List{};
-	// var computers = Sequence{}->union( self.computer->map computer2node());
-//	var components = self.computer.component->map component2node();
 	nodes := getNodes();
 	name := 'HCL Model';
 }
 
+//query getComputerNodes() : Sequence(Graph::Nodes) {
+//	return HCL::Computer.allInstances()-> getNodes();	
+//}
+
 query getNodes() : Sequence(Graph::Node) {
-	var components = HCL::Component.allInstances()->map component2node()->asSequence();
-	var computers = HCL::Computer.allInstances()->map computer2node()->asSequence();
+//	var components = HCL::Component.allInstances()->map component2node()->asSequence();
+//	var speednodes = HCL::ProcessingUnit.allInstances()->map speed2node()->asSequence();
+//	var computers = HCL::Computer.allInstances()->map computer2node()->asSequence();
 //	var properties = components->
-	var cpu = object Graph::Node { label := 'CPU'; shape := Graph::Shape::BOX; };
-	var display = object Graph::Node { label := 'Display'; shape := Graph::Shape::BOX; };
+	// var cpu = object Graph::Node { label := 'CPU'; shape := Graph::Shape::BOX; };
+	
+	var dispComponents = HCL::DisplayUnit.allInstances()->map display2node()->asSequence();
+	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
+	var dispDiagonals = HCL::DisplayUnit.allInstances()->map diag2node(dispComponents)->asSequence();
+	var display = mapDisplay(dispDiagonals);
+	
+//	var computers = HCL::Computer.allInstances()->map computer2node(dispComponents)->asSequence();
 	
 	return Sequence{
-		
-	}->union(computers)->union(components);
+		display
+	}->union(dispDiagonals)->union(dispComponents)->union(computers); //->union(components)->union(speednodes);
 }
 
-//query getComponents() :
+//mapping HCL::Component::component2node() : Graph::Node
+//disjuncts HCL::DisplayUnit::display2node, HCL::Processing::processing2node{}
 
-//helper HCL::Computer::getComputerNodes(inout n : List(Graph::Node)) {
-//	n->union( self->map computer2node() )
-//}
-
-
-//mapping HCL::Computer::hcl2graph() : Graph::Graph {
-//	var components = self.component->map component2node();
-//	
-//	var seq = Sequence {};
-//	var props = self.component->first(). getPropNodes();
-//	
-//	var properties = props->union(seq);
-//	
-//	nodes := Sequence {
-//		self.map computer2node(components)
-//	}->union(components)->union(props);
-//	
-//	// self.component->map component2node();
-////	nodes := self.map computer2node();
-//}
-
-mapping HCL::Computer::computer2node() : Graph::Node { //(in n : Sequence(Graph::Node) ) : Graph::Node {
+mapping HCL::Computer::computer2node(in n : Sequence(Graph::Node) ) : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
-	//outEdges := n->map node2Sedge();
+	outEdges := n->select(e | self.component->exists(c | c.label = e.label))->map node2Sedge();
 }
 
-
-helper HCL::Component::getPropNodes() : Sequence(Graph::Node) {
-	if (self.oclIsKindOf(HCL::DisplayUnit)) {
-		var compNode := self.map component2node();
-		var typeNode := self.oclAsType(HCL::DisplayUnit).map display2node();
-		var diagNode := self.oclAsType(HCL::DisplayUnit).map diag2node();
-		return Sequence { compNode, typeNode, diagNode };
-	} else if (self.oclIsKindOf(HCL::Processing)) {
-		return Sequence { }
-	};
-	return Sequence { };
+// top display node
+query mapDisplay(in n : Sequence(Graph::Node)) : Graph::Node {
+	return object Graph::Node { 
+		label := 'Display'; 
+		shape := Graph::Shape::BOX; 
+		outEdges := n->map node2Sedge();
+	}
 }
 
-mapping HCL::Component::component2node() : Graph::Node
-disjuncts HCL::DisplayUnit::display2node, HCL::Processing::processing2node{}
+// display diagonals
+mapping HCL::DisplayUnit::diag2node(in n : Sequence(Graph::Node)) : Graph::Node {
+	shape := Graph::Shape::BOX;
+	label := self.diagonal.toString() + ' ' + 'Inch';
+	outEdges := n->select(e | e.label = self.label)->map node2Sedge();
+}
 
-//mapping HCL::Component::component2node() : Graph::Node {
-//		label := self.label;
-//		shape := Graph::Shape::BOX;
-//	if (self.oclIsKindOf(HCL::DisplayUnit)) {
-//		var typeNode := self.oclAsType(HCL::DisplayUnit).map display2node();
-//		outEdges := typeNode.map node2Dedge();
-//		// nodes := self.
-//	} else if (self.oclIsKindOf(HCL::Processing)) {
-//		
-//	}
-//}
-
+// display components
 mapping HCL::DisplayUnit::display2node() : Graph::Node {
 	label := self.label;
 	shape := Graph::Shape::BOX;
-	var dispType = self.map type2node();
-	// outEdges := Sequence { dispType.map node2Dedge() };
 }
 
-// top level CPU
-mapping HCL::Processing::processing2node() : Graph::Node {
-	shape := Graph::Shape::BOX;
-	label := 'CPU';
-//	outEdges := n->map node2Sedge();
-}
-// top level Display
-mapping HCL::Display::topdisplay2node() : Graph::Node {
-	shape := Graph::Shape::BOX;
-	label := 'Display';
-//	outEdges := n->map node2Sedge();
-}
-
-mapping HCL::ProcessingUnit::speed2node() : Graph::Node {
-	shape := Graph::Shape::BOX;
-	label := self.speed.toString() + ' ' + 'GHz';
-}
-
-mapping HCL::DisplayUnit::diag2node() : Graph::Node {
-	shape := Graph::Shape::OVAL;
-	label := self.diagonal.toString() + ' ' + 'Inch';
-}
-
-// OVAL nodes
-mapping HCL::ProcessingUnit::cores2node() : Graph::Node {
-	shape := Graph::Shape::OVAL;
-	label := self.cores.toString() + ' ' + 'cores';
-}
-
-mapping HCL::ProcessingUnit::cache2node() : Graph::Node {
-	shape := Graph::Shape::OVAL;
-	label := self.l1.size.toString() + ' ' + self.l1.magnitude.toString();
-}
-
-mapping HCL::DisplayUnit::type2node() : Graph::Node {
-	shape := Graph::Shape::OVAL;
-	label := self.type.toString();
-}
 
 // solid EDGE
 mapping Graph::Node::node2Sedge() : Graph::Edge {
@@ -144,8 +81,3 @@ mapping Graph::Node::node2Dedge() : Graph::Edge {
 	style := Graph::Style::DASHED;
 	target := self;	
 }
-
-
-//query getShape() : Graph::Shape {
-//	return 
-//}

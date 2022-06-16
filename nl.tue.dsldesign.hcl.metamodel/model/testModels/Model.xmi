@@ -10,5 +10,23 @@
         xsi:type="hcl:DisplayUnit"
         label="my_display"
         diagonal="20.0"/>
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="my_cpu"
+        cores="4"
+        speed="20.0">
+      <l1 size="64"
+          processingunit="//@computer.0/@component.1"/>
+    </component>
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="my_cpu2"
+        cores="3"
+        speed="20.0"/>
+    <component
+        xsi:type="hcl:DisplayUnit"
+        label="my_disp2"
+        diagonal="34.0"
+        type="FullHD"/>
   </computer>
 </hcl:Model>
