@@ -12,9 +12,9 @@
       ecorePackage="hcl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//DisplayType">
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/HD"/>
-      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/FullHD"/>
-      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/FourK"/>
-      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/FiveK"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/Full%20HD"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/4K"/>
+      <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//DisplayType/5K"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="hcl.ecore#//StorageType">
       <genEnumLiterals ecoreEnumLiteral="hcl.ecore#//StorageType/SSD"/>

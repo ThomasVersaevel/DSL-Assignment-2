@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore" name="HCL Model">
-  <nodes label="Display">
-    <outEdges target="//@nodes.1"/>
-    <outEdges target="//@nodes.2"/>
-  </nodes>
-  <nodes label="34.0 Inch">
-    <outEdges target="//@nodes.5"/>
-  </nodes>
-  <nodes label="20.0 Inch">
-    <outEdges target="//@nodes.3"/>
-  </nodes>
-  <nodes label="my_display">
-    <outEdges style="DASHED" target="//@nodes.7"/>
-  </nodes>
-  <nodes label="FullHD" shape="OVAL"/>
-  <nodes label="my_disp2">
-    <outEdges style="DASHED" target="//@nodes.4"/>
-  </nodes>
-  <nodes label="my_computer">
-    <outEdges target="//@nodes.3"/>
-    <outEdges target="//@nodes.5"/>
-  </nodes>
-  <nodes label="HD" shape="OVAL"/>
-</graph:Graph>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://dsldesign.tue.nl/graph" xsi:schemaLocation="http://dsldesign.tue.nl/graph ../../nl.tue.dsldesign.graph.metamodel/model/graph.ecore">
+  <graph:Graph name="HCL Model">
+    <nodes label="Display">
+      <outEdges target="/0/@nodes.1"/>
+    </nodes>
+    <nodes label="34.0 Inch">
+      <outEdges target="/0/@nodes.3"/>
+    </nodes>
+    <nodes label="5K" shape="OVAL"/>
+    <nodes label="my_disp3">
+      <outEdges style="DASHED" target="/0/@nodes.2"/>
+    </nodes>
+    <nodes label="4K" shape="OVAL"/>
+    <nodes label="my_disp1">
+      <outEdges style="DASHED" target="/0/@nodes.4"/>
+    </nodes>
+    <nodes label="Full HD" shape="OVAL"/>
+    <nodes label="my_disp2">
+      <outEdges style="DASHED" target="/0/@nodes.6"/>
+    </nodes>
+    <nodes label="comp1">
+      <outEdges target="/0/@nodes.5"/>
+      <outEdges target="/0/@nodes.7"/>
+    </nodes>
+    <nodes label="comp_2">
+      <outEdges target="/0/@nodes.3"/>
+    </nodes>
+  </graph:Graph>
+  <graph:Node label="20.0 Inch">
+    <outEdges target="/0/@nodes.5"/>
+    <outEdges target="/0/@nodes.7"/>
+  </graph:Node>
+  <graph:Node label="20.0 Inch">
+    <outEdges target="/0/@nodes.5"/>
+    <outEdges target="/0/@nodes.7"/>
+  </graph:Node>
+</xmi:XMI>

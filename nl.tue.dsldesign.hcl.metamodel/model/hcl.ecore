@@ -25,9 +25,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DisplayType">
     <eLiterals name="HD" value="4"/>
-    <eLiterals name="FullHD" value="1"/>
-    <eLiterals name="FourK" value="2"/>
-    <eLiterals name="FiveK" value="3"/>
+    <eLiterals name="Full HD" value="1"/>
+    <eLiterals name="4K" value="2"/>
+    <eLiterals name="5K" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="StorageType">
     <eLiterals name="SSD" value="2"/>

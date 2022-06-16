@@ -4,19 +4,30 @@ digraph {
 	"//@nodes.0" [label=Display]
 	"//@nodes.0" -> "//@nodes.1"
 	"//@nodes.0" -> "//@nodes.2"
+	"//@nodes.0" -> "//@nodes.3"
 	"//@nodes.1" [label="34.0 Inch"]
-	"//@nodes.1" -> "//@nodes.5"
+	"//@nodes.1" -> "//@nodes.9"
 	"//@nodes.2" [label="20.0 Inch"]
-	"//@nodes.2" -> "//@nodes.3"
-	"//@nodes.3" [label=my_display]
-	"//@nodes.3" -> "//@nodes.7" [style=dashed]
-	"//@nodes.4" [label=FullHD shape=oval]
-	"//@nodes.4" [label=FullHD]
+	"//@nodes.2" -> "//@nodes.5"
+	"//@nodes.2" -> "//@nodes.7"
+	"//@nodes.3" [label="20.0 Inch"]
+	"//@nodes.3" -> "//@nodes.5"
+	"//@nodes.3" -> "//@nodes.7"
+	"//@nodes.4" [label="Full HD" shape=oval]
+	"//@nodes.4" [label="Full HD"]
 	"//@nodes.5" [label=my_disp2]
 	"//@nodes.5" -> "//@nodes.4" [style=dashed]
-	"//@nodes.6" [label=my_computer]
-	"//@nodes.6" -> "//@nodes.3"
-	"//@nodes.6" -> "//@nodes.5"
-	"//@nodes.7" [label=HD shape=oval]
-	"//@nodes.7" [label=HD]
+	"//@nodes.6" [label="4K" shape=oval]
+	"//@nodes.6" [label="4K"]
+	"//@nodes.7" [label=my_disp1]
+	"//@nodes.7" -> "//@nodes.6" [style=dashed]
+	"//@nodes.8" [label="5K" shape=oval]
+	"//@nodes.8" [label="5K"]
+	"//@nodes.9" [label=my_disp3]
+	"//@nodes.9" -> "//@nodes.8" [style=dashed]
+	"//@nodes.10" [label=comp1]
+	"//@nodes.10" -> "//@nodes.5"
+	"//@nodes.10" -> "//@nodes.7"
+	"//@nodes.11" [label=comp_2]
+	"//@nodes.11" -> "//@nodes.9"
 }

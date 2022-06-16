@@ -5,24 +5,29 @@
     xmlns:hcl="http://www.example.org/hcl"
     xsi:schemaLocation="http://www.example.org/hcl ../hcl.ecore">
   <computer
-      label="comp1">
+      label="my_computer">
     <component
         xsi:type="hcl:DisplayUnit"
-        label="my_disp1"
+        label="my_display"
         diagonal="20.0"
-        type="4K"/>
+        type="FourK"/>
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="my_cpu"
+        cores="4"
+        speed="20.0">
+      <l1 size="64"
+          processingunit="//@computer.0/@component.1"/>
+    </component>
+    <component
+        xsi:type="hcl:ProcessingUnit"
+        label="my_cpu2"
+        cores="3"
+        speed="20.0"/>
     <component
         xsi:type="hcl:DisplayUnit"
         label="my_disp2"
-        diagonal="20.0"
-        type="Full HD"/>
-  </computer>
-  <computer
-      label="comp_2">
-    <component
-        xsi:type="hcl:DisplayUnit"
-        label="my_disp3"
         diagonal="34.0"
-        type="5K"/>
+        type="FiveK"/>
   </computer>
 </hcl:Model>
